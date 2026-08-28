@@ -370,7 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const forceBingCNRow = document.getElementById('force-bing-cn-row');
   const toggleForceBingCN = document.getElementById('toggle-force-bing-cn');
   const toggleHistorySwitch = document.getElementById('toggle-history-switch');
-  const statusHistoryText = document.getElementById('status-history');
   const logoContainer = document.getElementById('logo');
 
 
@@ -384,7 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const containerEngineUrl = document.getElementById('container-engine-url');
   const tipEngineName = document.getElementById('tip-engine-name');
   const tipEngineUrl = document.getElementById('tip-engine-url');
-  const textEngineUrlError = document.getElementById('text-engine-url-error');
   const btnEngineCancel = document.getElementById('btn-engine-cancel');
 
 
@@ -740,13 +738,9 @@ fileInputRestore?.addEventListener('change', (e) => {
 
     // 时间开关事件
   const toggleTimeCapsuleSwitch = document.getElementById('toggle-time-capsule-switch');
-  const statusTimeCapsuleText = document.getElementById('status-time-capsule');
 
   if (toggleTimeCapsuleSwitch) {
     toggleTimeCapsuleSwitch.checked = state.showTimeCapsule;
-    if (statusTimeCapsuleText) {
-      statusTimeCapsuleText.innerText = state.showTimeCapsule ? '开' : '关';
-    }
 
     toggleTimeCapsuleSwitch.addEventListener('change', (e) => {
       setState('showTimeCapsule', e.target.checked);
@@ -757,13 +751,9 @@ fileInputRestore?.addEventListener('change', (e) => {
 
   // 菜单按钮开关事件
   const toggleMenuButtonSwitch = document.getElementById('toggle-menu-button-switch');
-  const statusMenuButtonText = document.getElementById('status-menu-button');
 
   if (toggleMenuButtonSwitch) {
     toggleMenuButtonSwitch.checked = state.showMenuButton;
-    if (statusMenuButtonText) {
-      statusMenuButtonText.innerText = state.showMenuButton ? '开' : '关';
-    }
 
     toggleMenuButtonSwitch.addEventListener('change', (e) => {
       setState('showMenuButton', e.target.checked);
