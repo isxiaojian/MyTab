@@ -772,14 +772,25 @@ function getFaviconUrl(urlStr) {
   return `https://api.xinac.net/icon/?url=${domain}`;
 }
 
-// 对用户输入进行 HTML 转义，防止 XSS
+// 对用户输入进行 HTML 转义，防止 XSS（幂等：可对已转义文本重复调用而不产生双重转义）
 function sanitizeInput(str) {
-  return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return str
+    .replace(/&(amp|lt|gt|quot|#39);/g, (m, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" }[e]))
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-// 反转 HTML 转义（仅还原 <>），用于显示原始文本
+// 反转 HTML 转义，用于还原显示原始文本
 function decodeInput(str) {
-  return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  return str
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
 }
 
 // ===== 重写下拉菜单(Custom Select) =====
@@ -2519,8 +2530,8 @@ searchInput?.addEventListener('input', () => {
           baseUrl = bingCNSearchUrl;
         }
         targetUrl = baseUrl + encodeURIComponent(query);
-        window.location.href = targetUrl;
       }
+      window.location.href = targetUrl;
     }
   }
 

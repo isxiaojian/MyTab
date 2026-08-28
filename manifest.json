@@ -10,18 +10,11 @@
     "newtab": "index.html"
   },
 
-  "web_accessible_resources": [
-    {
-      "resources": ["img/*"],
-      "matches": ["<all_urls>"]
-    }
-  ],
-
   "host_permissions": [
     "https://bing.biturl.top/",
-    "https://api.xinac.net/*",
-    "https://suggestion.baidu.com/*",
-    "https://suggestqueries.google.com/*"
+    "https://api.xinac.net/icon/*",
+    "https://suggestion.baidu.com/su*",
+    "https://suggestqueries.google.com/complete/*"
   ],
 
   "icons": {
