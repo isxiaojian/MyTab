@@ -47,7 +47,7 @@ Use file import:
 - **Browsers**:
   - Chrome / Edge: 109+
   - Firefox: 109+
-- **Supported Languages**: Simplified Chinese / Traditional Chinese / English / Русский / 日本語
+- **Supported Languages**: Simplified Chinese
 
 
 ## Important Notice

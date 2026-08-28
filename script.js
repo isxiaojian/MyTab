@@ -47,8 +47,6 @@ const i18nData = {
     focused: '聚焦',
     background: '背景',
     editBackground: '编辑背景',
-    language: '页面语言',
-    langAuto: '默认（跟随设备）',
     cookieNotice: '隐私与 Cookie',
     license: '开源协议',
     contributor: '贡献名单',
@@ -119,431 +117,11 @@ const i18nData = {
     resetDoneDesc: '所有设置已重置为初始状态，页面即将刷新。',
     refreshNow: '立即刷新'
   },
-  'zh-TW': {
-    pageTitle: '新分頁',
-    settingsTitle: '頁面設定',
-    close: '關閉',
-    quicklinks: '快速連結',
-    off: '關閉',
-    on: '開啟',
-    rows1: '1 行',
-    rows2: '2 行',
-    showTimeCapsule: '顯示時間',
-    showMenuButton: '顯示菜單按鈕',
-    searchEngine: '搜尋引擎',
-    custom: '自訂',
-    editCustomEngine: '編輯自訂搜尋引擎',
-    saveHistory: '儲存搜尋紀錄',
-    layout: '頁面佈局',
-    inspirational: '展望',
-    focused: '聚焦',
-    background: '背景',
-    editBackground: '編輯背景',
-    language: '頁面語言',
-    langAuto: '預設（隨設備設定）',
-    cookieNotice: '隱私與 Cookie',
-    license: '開源協議',
-    contributor: '貢獻名單',
-    helpFeedback: '說明與意見回饋',
-    presentedBy: '由',
-    author: 'isxiaojian',
-    forYou: '為您呈現',
-    disclaimer: '請注意，此網頁與 Microsoft 無關。',
-    searchPlaceholder: '搜尋或輸入 Web 地址',
-    searchInput: '搜尋輸入框',
-    clearSearchHistory: '清除搜尋紀錄',
-    customBackground: '自訂背景',
-    usingDefaultBg: '正在使用預設背景',
-    selectImage: '選擇圖片或影片',
-    uploadFile: '上傳檔案',
-    restoreDefault: '恢復預設',
-    editShortcut: '編輯快速連結',
-    name: '名稱',
-    inputNamePh: '輸入快速連結名稱',
-    errorNameReq: '請輸入快速連結名稱',
-    errorUrlReq: '請輸入網址',
-    delete: '刪除',
-    cancel: '取消',
-    save: '儲存',
-    customEngineTitle: '自訂搜尋引擎',
-    engineName: '搜尋引擎名稱',
-    engineNamePh: '例如: DuckDuckGo',
-    errorEngineNameReq: '請輸入搜尋引擎名稱',
-    engineUrl: '搜尋 URL (%s 替換搜尋關鍵字)',
-    errorEngineUrlFormat: '請輸入搜尋 URL，必須包含 %s',
-    useOnlineContent: '使用線上內容',
-    bingDaily: 'Bing每日桌布',
-    customUrl: '自訂',
-    customOnlineWallpaper: '自訂線上桌布',
-    imageOrVideoUrl: '圖片或影片網址',
-    enterUrl: '輸入圖片或影片網址',
-    forceBingCN: '強制使用必應中國版',
-    forceBingCNDesc: '<b>開啟</b>：強制使用必應中國版<br><b>關閉</b>：根據網路環境自動選擇。<br>此選項可以避免代理設定導致 www.bing.com 無法自動跳轉到 cn.bing.com。',
-    enhancedVisibility: '增強元素可見性',
-    enhancedVisibilityDesc: '開啟背景時給Logo和頂部按鈕添加半透明背景，使其在背景圖上更清晰',
-    addlink: '新增',
-    accountDetails: '編輯帳戶資訊',
-    manageProfiles: '管理設定檔',
-    initConfig: '初始化設定',
-    editProfile: '編輯個人資料',
-    profileAvatar: '頭像',
-    uploadAvatar: '上傳頭像',
-    removeAvatar: '刪除頭像',
-    description: '描述',
-    manageProfilesTitle: '管理設定檔',
-    exportConfig: '匯出設定',
-    importConfig: '還原設定',
-    resetTitle: '重設 MyTab',
-    resetDesc: '如果你遇到了一些問題，或是對於目前的設定不滿意，重設可以清除所有數據並還原 MyTab 為初始狀態，請注意，此操作不可撤回！',
-    confirmReset: '確定',
-    resetDoneTitle: '重設完成',
-    resetDoneDesc: '所有設定已重設為初始狀態，頁面即將重新整理。',
-    refreshNow: '立即重新整理'
- },
-  'zh-WY': {
-    pageTitle: '新籤頁',
-    settingsTitle: '頁面之設',
-    close: '關',
-    quicklinks: '快速連結',
-    off: '止',
-    on: '啟',
-    rows1: '一列',
-    rows2: '二列',
-    showTimeCapsule: '顯時',
-    showMenuButton: '顯目錄',
-    searchEngine: '搜尋器',
-    custom: '自訂',
-    editCustomEngine: '訂搜器',
-    saveHistory: '搜錄',
-    layout: '佈局',
-    inspirational: '展望',
-    focused: '專注',
-    background: '底景',
-    editBackground: '修飾底景',
-    language: '頁面語',
-    langAuto: '預設（順裝置）',
-    cookieNotice: '隱私與餅儲',
-    license: '開源之約',
-    contributor: '題名錄',
-    helpFeedback: '求助與反饋',
-    presentedBy: '由',
-    author: 'isxiaojian',
-    forYou: '呈獻',
-    disclaimer: '謹告：此頁與微軟無涉。',
-    searchPlaceholder: '或搜或鍵，惟網址依',
-    searchInput: '搜尋之框',
-    clearSearchHistory: '拭搜尋記',
-    customBackground: '自定底景',
-    usingDefaultBg: '現用默認底景',
-    selectImage: '擇圖或影',
-    uploadFile: '上傳檔案',
-    restoreDefault: '復初',
-    editShortcut: '修快速連結',
-    name: '名',
-    inputNamePh: '書快速連結之名',
-    errorNameReq: '請填快速連結名',
-    errorUrlReq: '請填網址',
-    delete: '刪',
-    cancel: '止',
-    save: '儲',
-    customEngineTitle: '自定搜尋器',
-    engineName: '引擎之名',
-    engineNamePh: '例: DuckDuckGo',
-    errorEngineNameReq: '請填搜尋器名',
-    engineUrl: '搜尋 URL (%s 換字)',
-    errorEngineUrlFormat: '請填搜尋 URL，必含 %s',
-    useOnlineContent: '用網圖',
-    bingDaily: '必應日圖',
-    customUrl: '自訂',
-    customOnlineWallpaper: '自訂網圖',
-    imageOrVideoUrl: '圖影鏈',
-    enterUrl: '輸圖影鏈',
-    forceBingCN: '勒令必應專用中土之版',
-    forceBingCNDesc: '<b>啟</b>：勒令必應專用中土之版<br><b>關</b>：隨網路之勢自擇。<br>此舉可免代理令主站失其自轉之能。',
-    enhancedVisibility: '彰明諸元',
-    enhancedVisibilityDesc: '啟背景時，徽標頂鈕之下施輕翳，映於畫圖而愈晰',
-    addlink: '增',
-    accountDetails: '改易簡策，存真去偽',
-    manageProfiles: '掌檔',
-    initConfig: '初設',
-    editProfile: '修飾名帖',
-    profileAvatar: '首像',
-    uploadAvatar: '傳首像',
-    removeAvatar: '去首像',
-    description: '描述',
-    manageProfilesTitle: '掌檔',
-    exportConfig: '出設',
-    importConfig: '入設',
-    resetTitle: '復初',
-    resetDesc: '倘遭困顿，或厌时制，可复初以涤万设，返 MyTab 于鸿蒙。然此举不可追，慎之慎之！',
-    confirmReset: '定',
-    resetDoneTitle: '妙哉！返本归元',
-    resetDoneDesc: '万设归初，新页将启，天光焕然。',
-    refreshNow: '即新'
-  },
-  'en': {
-    pageTitle: 'New Tab',
-    settingsTitle: 'Page Settings',
-    close: 'Close',
-    quicklinks: 'Quick Links',
-    off: 'Off',
-    on: 'On',
-    rows1: '1 row',
-    rows2: '2 rows',
-    showTimeCapsule: 'Show Time',
-    showMenuButton: 'Show Menu Button',
-    searchEngine: 'Search Engine',
-    custom: 'Custom',
-    editCustomEngine: 'Edit custom search engine',
-    saveHistory: 'Save search history',
-    layout: 'Layout',
-    inspirational: 'Inspirational',
-    focused: 'Focused',
-    background: 'Background',
-    editBackground: 'Edit background',
-    language: 'Language',
-    langAuto: 'Default (System)',
-    cookieNotice: 'Privacy & Cookies',
-    license: 'License',
-    contributor: 'Contributor',
-    helpFeedback: 'Help & Feedback',
-    presentedBy: 'Presented by',
-    author: 'isxiaojian',
-    forYou: '',
-    disclaimer: 'Note: This page is not affiliated with Microsoft.',
-    searchPlaceholder: 'Search the web or enter address',
-    searchInput: 'Search input',
-    clearSearchHistory: 'Clear search history',
-    customBackground: 'Custom Background',
-    usingDefaultBg: 'Using default background',
-    selectImage: 'Select image or video',
-    uploadFile: 'Upload file',
-    restoreDefault: 'Restore default',
-    editShortcut: 'Edit quick link',
-    name: 'Name',
-    inputNamePh: 'Enter quick link name',
-    errorNameReq: 'Please enter quick link name',
-    errorUrlReq: 'Please enter URL',
-    delete: 'Delete',
-    cancel: 'Cancel',
-    save: 'Save',
-    customEngineTitle: 'Custom Search Engine',
-    engineName: 'Engine Name',
-    engineNamePh: 'e.g. DuckDuckGo',
-    errorEngineNameReq: 'Please enter engine name',
-    engineUrl: 'Search URL (%s replacing query)',
-    errorEngineUrlFormat: 'Search URL must contain %s',
-    useOnlineContent: 'Use online content',
-    bingDaily: 'Bing daily wallpaper',
-    customUrl: 'Custom',
-    customOnlineWallpaper: 'Custom online wallpaper',
-    imageOrVideoUrl: 'Image or video URL',
-    enterUrl: 'Enter image or video URL',
-    bingCN: 'Bing',
-    forceBingCN: 'Force Bing China',
-    forceBingCNDesc: '<b>On</b>: Forces cn.bing.com<br><b>Off</b>: Automatically selects based on network conditions.<br>This option prevents proxy settings from interfering with automatic redirection of www.bing.com to cn.bing.com.',
-    enhancedVisibility: 'Enhance Element Visibility',
-    enhancedVisibilityDesc: 'Adds semi-transparent backgrounds to Logo and header buttons when background is enabled for better clarity',
-    addlink: 'Add',
-    accountDetails: 'Edit Account',
-    manageProfiles: 'Manage Profiles',
-    initConfig: 'Init Config',
-    editProfile: 'Edit Profile',
-    profileAvatar: 'Avatar',
-    uploadAvatar: 'Upload Avatar',
-    removeAvatar: 'Remove Avatar',
-    description: 'Description',
-    manageProfilesTitle: 'Manage Profiles',
-    exportConfig: 'Export Config',
-    importConfig: 'Import Config',
-    resetTitle: 'Reset MyTab',
-    resetDesc: 'If you encounter issues or are unsatisfied with current settings, resetting will clear all data and restore MyTab to its initial state. Note: This action cannot be undone!',
-    confirmReset: 'Confirm',
-    resetDoneTitle: 'Reset Complete',
-    resetDoneDesc: 'All settings have been reset to initial state. The page will refresh.',
-    refreshNow: 'Refresh Now'
-  },
-  'ja': {
-    pageTitle: '新しいタブ',
-    settingsTitle: '設定',
-    close: '閉じる',
-    quicklinks: 'クイックリンク',
-    off: 'オフ',
-    on: 'オン',
-    rows1: '1 行',
-    rows2: '2 行',
-    showTimeCapsule: '時間を表示',
-    showMenuButton: 'メニューボタンを表示',
-    searchEngine: '検索エンジン',
-    custom: 'カスタム',
-    editCustomEngine: 'カスタム検索エンジンを編集',
-    saveHistory: '検索履歴を保存',
-    layout: 'レイアウト',
-    inspirational: 'シンプル',
-    focused: 'フォーカス',
-    background: '背景',
-    editBackground: '背景を編集',
-    language: '言語',
-    langAuto: 'デフォルト（システムに従う）',
-    cookieNotice: 'プライバシーとクッキー',
-    license: 'License',
-    contributor: '貢献者',
-    helpFeedback: 'ヘルプとフィードバック',
-    presentedBy: '提供:',
-    author: 'isxiaojian',
-    forYou: '',
-    disclaimer: '注: このページは Microsoft とは関係ありません。',
-    searchPlaceholder: 'Web を検索またはアドレスを入力',
-    searchInput: '検索入力ボックス',
-    clearSearchHistory: '検索履歴を消去',
-    customBackground: 'カスタム背景',
-    usingDefaultBg: 'デフォルトの背景を使用中',
-    selectImage: '画像または動画を選択',
-    uploadFile: 'ファイルをアップロード',
-    restoreDefault: 'デフォルトに戻す',
-    editShortcut: 'クイックリンクを編集',
-    name: '名前',
-    inputNamePh: 'クイックリンク名を入力',
-    errorNameReq: 'クイックリンク名を入力してください',
-    errorUrlReq: 'URLを入力してください',
-    delete: '削除',
-    cancel: 'キャンセル',
-    save: 'OK',
-    customEngineTitle: 'カスタム検索エンジン',
-    engineName: '検索エンジン名',
-    engineNamePh: '例: DuckDuckGo',
-    errorEngineNameReq: '検索エンジン名を入力してください',
-    engineUrl: '検索 URL (%s が検索語に置換されます)',
-    errorEngineUrlFormat: '検索 URL には %s を含める必要があります',
-    useOnlineContent: 'オンラインコンテンツを使用',
-    bingDaily: 'Bingの今日の壁紙',
-    customUrl: 'カスタム',
-    customOnlineWallpaper: 'カスタムオンライン壁紙',
-    imageOrVideoUrl: '画像または動画のURL',
-    enterUrl: '画像または動画のURLを入力',
-    bingCN: 'Bing',
-    forceBingCN: 'Bing中国版を強制使用',
-    forceBingCNDesc: '<b>ON</b>：cn.bing.com を強制使用<br><b>OFF</b>：ネットワーク環境に応じて自動的に選択<br>このオプションにより、プロキシ設定による www.bing.com から cn.bing.com への自動リダイレクトの妨げを防ぎます。',
-    enhancedVisibility: '要素の視認性を向上',
-    enhancedVisibilityDesc: '背景有効時にロゴとヘッダーボタンに半透明の背景を追加し、見やすくします',
-    addlink: '追加',
-    accountDetails: 'アカウント編集',
-    manageProfiles: 'プロファイル管理',
-    initConfig: '初期設定',
-    editProfile: 'プロファイル編集',
-    profileAvatar: 'アバター',
-    uploadAvatar: 'アップロード',
-    removeAvatar: '削除',
-    description: '説明',
-    manageProfilesTitle: 'プロファイル管理',
-    exportConfig: '設定をエクスポート',
-    importConfig: '設定をインポート',
-    resetTitle: 'MyTabをリセット',
-    resetDesc: '問題が発生した場合や現在の設定に満足できない場合、リセットするとすべてのデータが消去されMyTabが初期状態に戻ります。この操作は元に戻せません！',
-    confirmReset: 'リセット',
-    resetDoneTitle: 'リセット完了',
-    resetDoneDesc: 'すべての設定が初期状態にリセットされました。ページが更新されます。',
-    refreshNow: '今すぐ更新'
-  },
-  'ru': {
-    pageTitle: 'Новая вкладка',
-    settingsTitle: 'Настройки страницы',
-    close: 'Закрыть',
-    quicklinks: 'Быстрые ссылки',
-    off: 'Выкл',
-    on: 'Вкл',
-    rows1: '1 строка',
-    rows2: '2 строки',
-    showTimeCapsule: 'Показать время',
-    showMenuButton: 'Показать кнопку меню',
-    searchEngine: 'Поисковая система',
-    custom: 'Пользовательская',
-    editCustomEngine: 'Изменить поисковую систему',
-    saveHistory: 'Сохранять историю поиска',
-    layout: 'Макет',
-    inspirational: 'Вдохновение',
-    focused: 'Фокус',
-    background: 'Фон',
-    editBackground: 'Изменить фон',
-    language: 'Язык',
-    langAuto: 'По умолчанию (системный)',
-    cookieNotice: 'Конфиденциальность и файлы cookie',
-    license: 'Лицензия',
-    contributor: 'Вкладчики',
-    helpFeedback: 'Справка и отзывы',
-    presentedBy: 'Создатель:',
-    author: 'isxiaojian',
-    forYou: '',
-    disclaimer: 'Примечание: Эта страница не связана с Microsoft.',
-    searchPlaceholder: 'Введите поисковый запрос или URL',
-    searchInput: 'Поле поиска',
-    clearSearchHistory: 'Очистить историю поиска',
-    customBackground: 'Пользовательский фон',
-    usingDefaultBg: 'Используется стандартный фон',
-    selectImage: 'Выберите фото или видео',
-    uploadFile: 'Загрузить файл',
-    restoreDefault: 'Сбросить',
-    editShortcut: 'Изменить быструю ссылку',
-    name: 'Название',
-    inputNamePh: 'Введите название быстрой ссылки',
-    errorNameReq: 'Введите название быстрой ссылки',
-    errorUrlReq: 'Введите URL',
-    delete: 'Удалить',
-    cancel: 'Отмена',
-    save: 'Сохранить',
-    customEngineTitle: 'Пользовательский поиск',
-    engineName: 'Название',
-    engineNamePh: 'Например: DuckDuckGo',
-    errorEngineNameReq: 'Введите название',
-    engineUrl: 'URL поиска (%s вместо запроса)',
-    errorEngineUrlFormat: 'URL должен содержать %s',
-    useOnlineContent: 'Использовать онлайн-контент',
-    bingDaily: 'Ежедневные обои Bing',
-    customUrl: 'Пользовательский',
-    customOnlineWallpaper: 'Пользовательские онлайн-обои',
-    imageOrVideoUrl: 'URL изображения или видео',
-    enterUrl: 'Введите URL изображения или видео',
-    bingCN: 'Bing',
-    forceBingCN: 'Принудительно использовать Bing China',
-    forceBingCNDesc: '<b>Вкл.</b>: Принудительно использует cn.bing.com<br><b>Выкл.</b>: Автоматический выбор в зависимости от сетевых условий<br>Этот параметр предотвращает проблемы с прокси, мешающие автоматическому редиректу www.bing.com на cn.bing.com.',
-    enhancedVisibility: 'Повысить видимость элементов',
-    enhancedVisibilityDesc: 'Добавляет полупрозрачный фон к логотипу и кнопкам заголовка при включенном фоне для лучшей читаемости',
-    addlink: 'Добавить',
-    accountDetails: 'Редактировать аккаунт',
-    manageProfiles: 'Управление профилями',
-    initConfig: 'Инициализация',
-    editProfile: 'Редактировать профиль',
-    profileAvatar: 'Аватар',
-    uploadAvatar: 'Загрузить',
-    removeAvatar: 'Удалить',
-    description: 'Описание',
-    manageProfilesTitle: 'Управление профилями',
-    exportConfig: 'Экспорт настроек',
-    importConfig: 'Импорт настроек',
-    resetTitle: 'Сбросить MyTab',
-    resetDesc: 'Если у вас возникли проблемы или вы недовольны текущими настройками, сброс удалит все данные и восстановит MyTab в исходное состояние. Обратите внимание: это действие необратимо!',
-    confirmReset: 'Подтвердить',
-    resetDoneTitle: 'Сброс завершён',
-    resetDoneDesc: 'Все настройки сброшены до исходного состояния. Страница будет обновлена.',
-    refreshNow: 'Обновить сейчас'
-  }
 };
 
 // 根据用户语言设置和系统语言，解析并返回实际使用的语言代码
 function getResolvedLanguageCode(langConfig) {
-  if (langConfig && langConfig !== 'auto') {
-    return langConfig;
-  }
-  const sysLang = (navigator.language || navigator.userLanguage || 'zh-CN').toLowerCase();
-  if (sysLang.startsWith('zh')) {
-    if (sysLang.includes('tw') || sysLang.includes('hk') || sysLang.includes('mo')) {
-      return 'zh-TW';
-    }
-    return 'zh-CN';
-  }
-  if (sysLang.startsWith('ja')) return 'ja';
-  if (sysLang.startsWith('ru')) return 'ru';
-  if (sysLang.startsWith('en')) return 'en';
+  // 仅保留简体中文
   return 'zh-CN';
 }
 
@@ -552,7 +130,7 @@ function applyLanguage(langConfig) {
   const langCode = getResolvedLanguageCode(langConfig);
   const dict = i18nData[langCode] || i18nData['zh-CN'];
 
-  document.documentElement.lang = langCode.startsWith('zh') ? (langCode === 'zh-TW' ? 'zh-TW' : 'zh-CN') : langCode;
+  document.documentElement.lang = 'zh-CN';
 
   // 1.替换 innerText
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1072,8 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectQuicklinks = document.getElementById('select-quicklinks');
   const quicklinksElem = document.getElementById('quicklinks');
   const logoContainer = document.getElementById('logo');
-  const selectLanguage = document.getElementById('select-language');
-  
+
   const searchContainer = document.getElementById('search-container');
   const fakebox = document.getElementById('fakebox');
   const searchInput = document.getElementById('search-input');
@@ -1678,21 +1255,21 @@ fileInputRestore?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+    applyLanguage('zh-CN');
   });
 
   toggleBgModalSwitch?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+    applyLanguage('zh-CN');
   });
 
   toggleEnhancedVisibility?.addEventListener('change', (e) => {
     enhancedVisibility = e.target.checked;
     Storage.set('ntp_enhanced_visibility', enhancedVisibility);
     applyEnhancedVisibility();
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+    applyLanguage('zh-CN');
   });
 
   // 壁纸弹窗逻辑
@@ -1700,7 +1277,7 @@ fileInputRestore?.addEventListener('change', (e) => {
     popoverSettings?.classList.remove('active');
     modalWallpaper?.classList.add('active');
     renderWallpaper();
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+    applyLanguage('zh-CN');
   });
 
   btnCloseWallpaperModal?.addEventListener('click', () => {
@@ -1767,7 +1344,7 @@ fileInputRestore?.addEventListener('change', (e) => {
         applyBackgroundState();
         if (toggleBgSwitch) toggleBgSwitch.checked = true;
         if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-        applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+        applyLanguage('zh-CN');
       } else {
         alert('获取必应壁纸失败，请稍后重试。');
       }
@@ -1836,7 +1413,7 @@ fileInputRestore?.addEventListener('change', (e) => {
   applyBackgroundState();
   if (toggleBgSwitch) toggleBgSwitch.checked = true;
   if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-  applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+  applyLanguage('zh-CN');
   closeOnlineModal();
 });
 
@@ -1884,7 +1461,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleForceBingCN?.addEventListener('change', (e) => {
     forceBingCN = e.target.checked;
     Storage.set('ntp_force_bing_cn', forceBingCN);
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto'); 
+    applyLanguage('zh-CN'); 
   });
 
   btnEditEngine?.addEventListener('click', () => {
@@ -1894,7 +1471,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleHistorySwitch?.addEventListener('change', (e) => {
     historyEnabled = e.target.checked;
     Storage.set('ntp_history_enabled', historyEnabled);
-    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+    applyLanguage('zh-CN');
     fetchAndShowSuggestions();
   });
 
@@ -1912,8 +1489,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   if (toggleTimeCapsuleSwitch) {
     toggleTimeCapsuleSwitch.checked = showTimeCapsule;
     // 初始状态文字
-    const savedLang = localStorage.getItem('mytab_language') || 'auto';
-    const dict = i18nData[getResolvedLanguageCode(savedLang)] || i18nData['zh-CN'];
+    const dict = i18nData['zh-CN'];
     if (statusTimeCapsuleText) {
       statusTimeCapsuleText.innerText = showTimeCapsule ? dict.on : dict.off;
     }
@@ -1921,7 +1497,7 @@ inputOnlineUrl?.addEventListener('input', () => {
     toggleTimeCapsuleSwitch.addEventListener('change', (e) => {
       showTimeCapsule = e.target.checked;
       Storage.set('ntp_show_time_capsule', showTimeCapsule);
-      applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+      applyLanguage('zh-CN');
       applyTimeCapsuleVisibility();
     });
   }
@@ -1932,8 +1508,7 @@ inputOnlineUrl?.addEventListener('input', () => {
 
   if (toggleMenuButtonSwitch) {
     toggleMenuButtonSwitch.checked = showMenuButton;
-    const savedLang = localStorage.getItem('mytab_language') || 'auto';
-    const dict = i18nData[getResolvedLanguageCode(savedLang)] || i18nData['zh-CN'];
+    const dict = i18nData['zh-CN'];
     if (statusMenuButtonText) {
       statusMenuButtonText.innerText = showMenuButton ? dict.on : dict.off;
     }
@@ -1941,7 +1516,7 @@ inputOnlineUrl?.addEventListener('input', () => {
     toggleMenuButtonSwitch.addEventListener('change', (e) => {
       showMenuButton = e.target.checked;
       Storage.set('ntp_show_menu_button', showMenuButton);
-      applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+      applyLanguage('zh-CN');
       applyMenuButtonVisibility();
     });
   }
@@ -2100,7 +1675,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   quicklinksElem.appendChild(addBtnStatic);
 
   // 重新应用语言确保“添加”按钮文本更新
-  applyLanguage(localStorage.getItem('mytab_language') || 'auto');
+  applyLanguage('zh-CN');
 }
 
 
@@ -2535,19 +2110,8 @@ searchInput?.addEventListener('input', () => {
     }
   }
 
-  // 语言选择与应用初始化
-  const savedLang = localStorage.getItem('mytab_language') || 'auto';
-  if (selectLanguage) {
-    selectLanguage.value = savedLang;
-    selectLanguage.addEventListener('change', (e) => {
-      const val = e.target.value;
-      localStorage.setItem('mytab_language', val);
-      applyLanguage(val);
-    });
-  }
-
-  // 初始化应用全页翻译
-  applyLanguage(savedLang);
+  // 初始化应用翻译（仅保留中文）
+  applyLanguage('zh-CN');
 
   // 初始化自定义下拉组件
   initCustomSelects();
