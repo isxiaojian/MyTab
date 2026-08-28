@@ -54,7 +54,7 @@ const i18nData = {
     contributor: '贡献名单',
     helpFeedback: '帮助&反馈',
     presentedBy: '由',
-    xingyuefox: '星月Fox',
+    author: 'isxiaojian',
     forYou: '为您呈现',
     disclaimer: '请注意，此网页与 Microsoft 无关。',
     searchPlaceholder: '搜索或输入 Web 地址',
@@ -110,8 +110,8 @@ const i18nData = {
     importConfig: '恢复配置',
 
     // 重置确认弹窗
-    resetTitle: '重置 Litestart',
-    resetDesc: '如果你遇到了一些问题，或是对于目前的设定不满意，重置可以清除所有数据并还原 Litestart 为初始状态，请注意，此操作不可撤回！',
+    resetTitle: '重置 MyTab',
+    resetDesc: '如果你遇到了一些问题，或是对于目前的设定不满意，重置可以清除所有数据并还原 MyTab 为初始状态，请注意，此操作不可撤回！',
     confirmReset: '确定',
 
     // 重置完成弹窗
@@ -146,7 +146,7 @@ const i18nData = {
     contributor: '貢獻名單',
     helpFeedback: '說明與意見回饋',
     presentedBy: '由',
-    xingyuefox: 'XingYue_Fox',
+    author: 'isxiaojian',
     forYou: '為您呈現',
     disclaimer: '請注意，此網頁與 Microsoft 無關。',
     searchPlaceholder: '搜尋或輸入 Web 地址',
@@ -193,8 +193,8 @@ const i18nData = {
     manageProfilesTitle: '管理設定檔',
     exportConfig: '匯出設定',
     importConfig: '還原設定',
-    resetTitle: '重設 Litestart',
-    resetDesc: '如果你遇到了一些問題，或是對於目前的設定不滿意，重設可以清除所有數據並還原 Litestart 為初始狀態，請注意，此操作不可撤回！',
+    resetTitle: '重設 MyTab',
+    resetDesc: '如果你遇到了一些問題，或是對於目前的設定不滿意，重設可以清除所有數據並還原 MyTab 為初始狀態，請注意，此操作不可撤回！',
     confirmReset: '確定',
     resetDoneTitle: '重設完成',
     resetDoneDesc: '所有設定已重設為初始狀態，頁面即將重新整理。',
@@ -227,7 +227,7 @@ const i18nData = {
     contributor: '題名錄',
     helpFeedback: '求助與反饋',
     presentedBy: '由',
-    xingyuefox: '星月Fox',
+    author: 'isxiaojian',
     forYou: '呈獻',
     disclaimer: '謹告：此頁與微軟無涉。',
     searchPlaceholder: '或搜或鍵，惟網址依',
@@ -275,7 +275,7 @@ const i18nData = {
     exportConfig: '出設',
     importConfig: '入設',
     resetTitle: '復初',
-    resetDesc: '倘遭困顿，或厌时制，可复初以涤万设，返 Litestart 于鸿蒙。然此举不可追，慎之慎之！',
+    resetDesc: '倘遭困顿，或厌时制，可复初以涤万设，返 MyTab 于鸿蒙。然此举不可追，慎之慎之！',
     confirmReset: '定',
     resetDoneTitle: '妙哉！返本归元',
     resetDoneDesc: '万设归初，新页将启，天光焕然。',
@@ -308,7 +308,7 @@ const i18nData = {
     contributor: 'Contributor',
     helpFeedback: 'Help & Feedback',
     presentedBy: 'Presented by',
-    xingyuefox: 'XingYue_Fox',
+    author: 'isxiaojian',
     forYou: '',
     disclaimer: 'Note: This page is not affiliated with Microsoft.',
     searchPlaceholder: 'Search the web or enter address',
@@ -356,8 +356,8 @@ const i18nData = {
     manageProfilesTitle: 'Manage Profiles',
     exportConfig: 'Export Config',
     importConfig: 'Import Config',
-    resetTitle: 'Reset Litestart',
-    resetDesc: 'If you encounter issues or are unsatisfied with current settings, resetting will clear all data and restore Litestart to its initial state. Note: This action cannot be undone!',
+    resetTitle: 'Reset MyTab',
+    resetDesc: 'If you encounter issues or are unsatisfied with current settings, resetting will clear all data and restore MyTab to its initial state. Note: This action cannot be undone!',
     confirmReset: 'Confirm',
     resetDoneTitle: 'Reset Complete',
     resetDoneDesc: 'All settings have been reset to initial state. The page will refresh.',
@@ -390,7 +390,7 @@ const i18nData = {
     contributor: '貢献者',
     helpFeedback: 'ヘルプとフィードバック',
     presentedBy: '提供:',
-    xingyuefox: 'XingYue_Fox',
+    author: 'isxiaojian',
     forYou: '',
     disclaimer: '注: このページは Microsoft とは関係ありません。',
     searchPlaceholder: 'Web を検索またはアドレスを入力',
@@ -438,8 +438,8 @@ const i18nData = {
     manageProfilesTitle: 'プロファイル管理',
     exportConfig: '設定をエクスポート',
     importConfig: '設定をインポート',
-    resetTitle: 'Litestartをリセット',
-    resetDesc: '問題が発生した場合や現在の設定に満足できない場合、リセットするとすべてのデータが消去されLitestartが初期状態に戻ります。この操作は元に戻せません！',
+    resetTitle: 'MyTabをリセット',
+    resetDesc: '問題が発生した場合や現在の設定に満足できない場合、リセットするとすべてのデータが消去されMyTabが初期状態に戻ります。この操作は元に戻せません！',
     confirmReset: 'リセット',
     resetDoneTitle: 'リセット完了',
     resetDoneDesc: 'すべての設定が初期状態にリセットされました。ページが更新されます。',
@@ -472,7 +472,7 @@ const i18nData = {
     contributor: 'Вкладчики',
     helpFeedback: 'Справка и отзывы',
     presentedBy: 'Создатель:',
-    xingyuefox: 'XingYue_Fox',
+    author: 'isxiaojian',
     forYou: '',
     disclaimer: 'Примечание: Эта страница не связана с Microsoft.',
     searchPlaceholder: 'Введите поисковый запрос или URL',
@@ -520,8 +520,8 @@ const i18nData = {
     manageProfilesTitle: 'Управление профилями',
     exportConfig: 'Экспорт настроек',
     importConfig: 'Импорт настроек',
-    resetTitle: 'Сбросить Litestart',
-    resetDesc: 'Если у вас возникли проблемы или вы недовольны текущими настройками, сброс удалит все данные и восстановит Litestart в исходное состояние. Обратите внимание: это действие необратимо!',
+    resetTitle: 'Сбросить MyTab',
+    resetDesc: 'Если у вас возникли проблемы или вы недовольны текущими настройками, сброс удалит все данные и восстановит MyTab в исходное состояние. Обратите внимание: это действие необратимо!',
     confirmReset: 'Подтвердить',
     resetDoneTitle: 'Сброс завершён',
     resetDoneDesc: 'Все настройки сброшены до исходного состояния. Страница будет обновлена.',
@@ -1627,7 +1627,7 @@ btnExportConfig?.addEventListener('click', () => {
   const a = document.createElement('a');
   a.href = url;
   const dateStr = new Date().toISOString().slice(0, 10);
-  a.download = `Litestart_Backup_${dateStr}.json`;
+  a.download = `MyTab_Backup_${dateStr}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -1678,21 +1678,21 @@ fileInputRestore?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
   });
 
   toggleBgModalSwitch?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
   });
 
   toggleEnhancedVisibility?.addEventListener('change', (e) => {
     enhancedVisibility = e.target.checked;
     Storage.set('ntp_enhanced_visibility', enhancedVisibility);
     applyEnhancedVisibility();
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
   });
 
   // 壁纸弹窗逻辑
@@ -1700,7 +1700,7 @@ fileInputRestore?.addEventListener('change', (e) => {
     popoverSettings?.classList.remove('active');
     modalWallpaper?.classList.add('active');
     renderWallpaper();
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
   });
 
   btnCloseWallpaperModal?.addEventListener('click', () => {
@@ -1767,7 +1767,7 @@ fileInputRestore?.addEventListener('change', (e) => {
         applyBackgroundState();
         if (toggleBgSwitch) toggleBgSwitch.checked = true;
         if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-        applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+        applyLanguage(localStorage.getItem('mytab_language') || 'auto');
       } else {
         alert('获取必应壁纸失败，请稍后重试。');
       }
@@ -1836,7 +1836,7 @@ fileInputRestore?.addEventListener('change', (e) => {
   applyBackgroundState();
   if (toggleBgSwitch) toggleBgSwitch.checked = true;
   if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-  applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+  applyLanguage(localStorage.getItem('mytab_language') || 'auto');
   closeOnlineModal();
 });
 
@@ -1884,7 +1884,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleForceBingCN?.addEventListener('change', (e) => {
     forceBingCN = e.target.checked;
     Storage.set('ntp_force_bing_cn', forceBingCN);
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto'); 
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto'); 
   });
 
   btnEditEngine?.addEventListener('click', () => {
@@ -1894,7 +1894,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleHistorySwitch?.addEventListener('change', (e) => {
     historyEnabled = e.target.checked;
     Storage.set('ntp_history_enabled', historyEnabled);
-    applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+    applyLanguage(localStorage.getItem('mytab_language') || 'auto');
     fetchAndShowSuggestions();
   });
 
@@ -1912,7 +1912,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   if (toggleTimeCapsuleSwitch) {
     toggleTimeCapsuleSwitch.checked = showTimeCapsule;
     // 初始状态文字
-    const savedLang = localStorage.getItem('liteStart_language') || 'auto';
+    const savedLang = localStorage.getItem('mytab_language') || 'auto';
     const dict = i18nData[getResolvedLanguageCode(savedLang)] || i18nData['zh-CN'];
     if (statusTimeCapsuleText) {
       statusTimeCapsuleText.innerText = showTimeCapsule ? dict.on : dict.off;
@@ -1921,7 +1921,7 @@ inputOnlineUrl?.addEventListener('input', () => {
     toggleTimeCapsuleSwitch.addEventListener('change', (e) => {
       showTimeCapsule = e.target.checked;
       Storage.set('ntp_show_time_capsule', showTimeCapsule);
-      applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+      applyLanguage(localStorage.getItem('mytab_language') || 'auto');
       applyTimeCapsuleVisibility();
     });
   }
@@ -1932,7 +1932,7 @@ inputOnlineUrl?.addEventListener('input', () => {
 
   if (toggleMenuButtonSwitch) {
     toggleMenuButtonSwitch.checked = showMenuButton;
-    const savedLang = localStorage.getItem('liteStart_language') || 'auto';
+    const savedLang = localStorage.getItem('mytab_language') || 'auto';
     const dict = i18nData[getResolvedLanguageCode(savedLang)] || i18nData['zh-CN'];
     if (statusMenuButtonText) {
       statusMenuButtonText.innerText = showMenuButton ? dict.on : dict.off;
@@ -1941,7 +1941,7 @@ inputOnlineUrl?.addEventListener('input', () => {
     toggleMenuButtonSwitch.addEventListener('change', (e) => {
       showMenuButton = e.target.checked;
       Storage.set('ntp_show_menu_button', showMenuButton);
-      applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+      applyLanguage(localStorage.getItem('mytab_language') || 'auto');
       applyMenuButtonVisibility();
     });
   }
@@ -2100,7 +2100,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   quicklinksElem.appendChild(addBtnStatic);
 
   // 重新应用语言确保“添加”按钮文本更新
-  applyLanguage(localStorage.getItem('liteStart_language') || 'auto');
+  applyLanguage(localStorage.getItem('mytab_language') || 'auto');
 }
 
 
@@ -2536,12 +2536,12 @@ searchInput?.addEventListener('input', () => {
   }
 
   // 语言选择与应用初始化
-  const savedLang = localStorage.getItem('liteStart_language') || 'auto';
+  const savedLang = localStorage.getItem('mytab_language') || 'auto';
   if (selectLanguage) {
     selectLanguage.value = savedLang;
     selectLanguage.addEventListener('change', (e) => {
       const val = e.target.value;
-      localStorage.setItem('liteStart_language', val);
+      localStorage.setItem('mytab_language', val);
       applyLanguage(val);
     });
   }
