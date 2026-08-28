@@ -4,6 +4,18 @@ import { initWallpaper } from './wallpaper.js';
 import { initQuicklinks } from './quicklinks.js';
 import { initSearch, fetchAndShowSuggestions } from './search.js';
 
+// 根据当前配色方案设置 favicon（替代原内联脚本，符合 MV3 CSP）
+(function initFavicon() {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const icon = isDark ? 'img/icon_d.png' : 'img/icon_l.png';
+  const link = document.createElement('link');
+  link.rel = 'icon';
+  link.id = 'favicon';
+  link.type = 'image/png';
+  link.href = icon + '?r=' + Math.random();
+  document.head.appendChild(link);
+})();
+
 const logos = {
   bing: `
     <svg aria-hidden="true" id="logo-icon" width="48" height="48" viewBox="0 0 48 48">
