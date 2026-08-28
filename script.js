@@ -145,6 +145,56 @@ const Storage = {
   }
 };
 
+// ===== 集中状态管理 =====
+// 应用所有持久化状态（含默认值），作为单一数据源
+const state = {
+  engine: 'bing',
+  layout: 'focused',
+  quicklinksRow: '0',
+  historyEnabled: true,
+  showTimeCapsule: false,
+  showMenuButton: true,
+  forceBingCN: false,
+  bgEnabled: false,
+  customWallpaper: null,
+  enhancedVisibility: false,
+  customEngineConfig: { name: '', url: '' },
+  quicklinksList: [],
+  searchHistory: [],
+};
+
+// 状态字段对应的 localStorage key
+const STATE_KEYS = {
+  engine: 'ntp_engine',
+  layout: 'ntp_layout',
+  quicklinksRow: 'ntp_quicklinks',
+  historyEnabled: 'ntp_history_enabled',
+  showTimeCapsule: 'ntp_show_time_capsule',
+  showMenuButton: 'ntp_show_menu_button',
+  forceBingCN: 'ntp_force_bing_cn',
+  bgEnabled: 'ntp_bg_enabled',
+  customWallpaper: 'ntp_custom_wallpaper',
+  enhancedVisibility: 'ntp_enhanced_visibility',
+  customEngineConfig: 'ntp_custom_engine_config',
+  quicklinksList: 'ntp_quicklinks_list',
+  searchHistory: 'ntp_search_history',
+};
+
+// 从 localStorage 加载全部状态
+function loadState() {
+  for (const name of Object.keys(STATE_KEYS)) {
+    state[name] = Storage.get(STATE_KEYS[name], state[name]);
+  }
+}
+
+// 更新单个状态字段并持久化
+function setState(name, value) {
+  state[name] = value;
+  if (Object.prototype.hasOwnProperty.call(STATE_KEYS, name)) {
+    Storage.set(STATE_KEYS[name], value);
+  }
+}
+
 // 解析Hostname域名
 function getDomain(urlStr) {
   try {
@@ -516,12 +566,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 默认与自定义搜索引擎
-  let customEngineConfig = Storage.get('ntp_custom_engine_config', {
-    name: '',
-    url: ''
-  });
-
   const engineSearchUrls = {
     bing: 'https://www.bing.com/search?q=',
     baidu: 'https://www.baidu.com/s?wd=',
@@ -617,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyTimeCapsuleVisibility() {
     const display = document.getElementById('time-display');
     if (!display) return;
-    if (showTimeCapsule) {
+    if (state.showTimeCapsule) {
       display.classList.add('active');
       updateTimeCapsule();
       startTimeCapsuleTimer();
@@ -632,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('waffle');
     const popover = document.getElementById('popover-waffle');
     if (!btn) return;
-    if (showMenuButton) {
+    if (state.showMenuButton) {
       btn.style.display = '';
       if (popover) popover.style.display = '';
     } else {
@@ -656,65 +700,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-    // B1.读取并应用保存的页面设置/此为默认配置值
-  let savedEngine = Storage.get('ntp_engine', 'bing');
-  if (savedEngine === 'bingCN') {
-    savedEngine = 'bing';
-    Storage.set('ntp_engine', 'bing');
-    Storage.set('ntp_force_bing_cn', true);
+  // B1.读取并应用保存的页面设置
+  loadState();
+  if (state.engine === 'bingCN') {
+    setState('engine', 'bing');
+    setState('forceBingCN', true);
   }
-  const savedLayout = Storage.get('ntp_layout', 'focused');
-  const savedQuicklinksRow = Storage.get('ntp_quicklinks', '0');
-  let historyEnabled = Storage.get('ntp_history_enabled', true);
-  let searchHistory = Storage.get('ntp_search_history', []);
-  let showTimeCapsule = Storage.get('ntp_show_time_capsule', false);
-  let showMenuButton = Storage.get('ntp_show_menu_button', true);
-  let forceBingCN = Storage.get('ntp_force_bing_cn', false);
-  
-  let bgEnabled = Storage.get('ntp_bg_enabled', false);
-  let customWallpaperData = Storage.get('ntp_custom_wallpaper', null);
-  let enhancedVisibility = Storage.get('ntp_enhanced_visibility', false);
 
-  if (selectEngine) selectEngine.value = savedEngine;
-  if (selectQuicklinks) selectQuicklinks.value = savedQuicklinksRow;
-  if (toggleHistorySwitch) toggleHistorySwitch.checked = historyEnabled;
-  if (toggleForceBingCN) toggleForceBingCN.checked = forceBingCN;
-  if (toggleEnhancedVisibility) toggleEnhancedVisibility.checked = enhancedVisibility;
+  if (selectEngine) selectEngine.value = state.engine;
+  if (selectQuicklinks) selectQuicklinks.value = state.quicklinksRow;
+  if (toggleHistorySwitch) toggleHistorySwitch.checked = state.historyEnabled;
+  if (toggleForceBingCN) toggleForceBingCN.checked = state.forceBingCN;
+  if (toggleEnhancedVisibility) toggleEnhancedVisibility.checked = state.enhancedVisibility;
 
-  setLogo(savedEngine);
-  updateEngineEditButton(savedEngine);
-  updateForceBingCNRow(savedEngine);
-  document.body.setAttribute('data-layout', savedLayout);
-  quicklinksElem?.setAttribute('rows', savedQuicklinksRow);
+  setLogo(state.engine);
+  updateEngineEditButton(state.engine);
+  updateForceBingCNRow(state.engine);
+  document.body.setAttribute('data-layout', state.layout);
+  quicklinksElem?.setAttribute('rows', state.quicklinksRow);
 
   // 背景显隐及渲染逻辑
   function applyBackgroundState() {
-    if (toggleBgSwitch) toggleBgSwitch.checked = bgEnabled;
-    if (toggleBgModalSwitch) toggleBgModalSwitch.checked = bgEnabled;
+    if (toggleBgSwitch) toggleBgSwitch.checked = state.bgEnabled;
+    if (toggleBgModalSwitch) toggleBgModalSwitch.checked = state.bgEnabled;
 
-    if (bgEnabled) {
+    if (state.bgEnabled) {
       document.body.classList.add('bg-enabled');
       renderWallpaper();
     } else {
       document.body.classList.remove('bg-enabled');
       if (bgVideo) bgVideo.style.display = 'none';
       if (bgImage) bgImage.style.display = 'none';
-      if (enhancedVisibility) {
-        enhancedVisibility = false;
-        Storage.set('ntp_enhanced_visibility', false);
+      if (state.enhancedVisibility) {
+        setState('enhancedVisibility', false);
         if (toggleEnhancedVisibility) toggleEnhancedVisibility.checked = false;
       }
     }
 
     if (enhancedVisibilityRow) {
-      enhancedVisibilityRow.style.display = bgEnabled ? 'flex' : 'none';
+      enhancedVisibilityRow.style.display = state.bgEnabled ? 'flex' : 'none';
     }
     applyEnhancedVisibility();
   }
 
   // 根据"增强可见性"设置与背景开关，切换 body 的 data 属性
   function applyEnhancedVisibility() {
-    if (enhancedVisibility && bgEnabled) {
+    if (state.enhancedVisibility && state.bgEnabled) {
       document.body.setAttribute('data-enhanced-visibility', 'true');
     } else {
       document.body.removeAttribute('data-enhanced-visibility');
@@ -723,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 根据自定义壁纸数据，渲染视频/图片背景到页面和预览容器
   function renderWallpaper() {
-    if (!customWallpaperData) {
+    if (!state.customWallpaper) {
       if (bgVideo) bgVideo.style.display = 'none';
       if (bgImage) {
         bgImage.style.display = 'block';
@@ -738,29 +769,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (wallpaperTypeTitle) wallpaperTypeTitle.textContent = '上传的背景';
 
-    if (customWallpaperData.type === 'video') {
+    if (state.customWallpaper.type === 'video') {
       if (bgImage) bgImage.style.display = 'none';
       if (bgVideo) {
         bgVideo.style.display = 'block';
-        bgVideo.src = customWallpaperData.url;
+        bgVideo.src = state.customWallpaper.url;
         bgVideo.play().catch(() => {});
       }
 
       if (wallpaperPreviewContainer) {
         wallpaperPreviewContainer.innerHTML = `
-          <video src="${customWallpaperData.url}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+          <video src="${state.customWallpaper.url}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>
         `;
       }
     } else {
       if (bgVideo) bgVideo.style.display = 'none';
       if (bgImage) {
         bgImage.style.display = 'block';
-        bgImage.src = customWallpaperData.url;
+        bgImage.src = state.customWallpaper.url;
       }
 
       if (wallpaperPreviewContainer) {
         wallpaperPreviewContainer.innerHTML = `
-          <img src="${customWallpaperData.url}" alt="背景预览" style="width:100%;height:100%;object-fit:cover;" />
+          <img src="${state.customWallpaper.url}" alt="背景预览" style="width:100%;height:100%;object-fit:cover;" />
         `;
       }
     }
@@ -920,22 +951,19 @@ fileInputRestore?.addEventListener('change', (e) => {
 
   // 背景开关同步响应
   toggleBgSwitch?.addEventListener('change', (e) => {
-    bgEnabled = e.target.checked;
-    Storage.set('ntp_bg_enabled', bgEnabled);
+    setState('bgEnabled', e.target.checked);
     applyBackgroundState();
     updateStatusTexts();
   });
 
   toggleBgModalSwitch?.addEventListener('change', (e) => {
-    bgEnabled = e.target.checked;
-    Storage.set('ntp_bg_enabled', bgEnabled);
+    setState('bgEnabled', e.target.checked);
     applyBackgroundState();
     updateStatusTexts();
   });
 
   toggleEnhancedVisibility?.addEventListener('change', (e) => {
-    enhancedVisibility = e.target.checked;
-    Storage.set('ntp_enhanced_visibility', enhancedVisibility);
+    setState('enhancedVisibility', e.target.checked);
     applyEnhancedVisibility();
     updateStatusTexts();
   });
@@ -964,11 +992,10 @@ fileInputRestore?.addEventListener('change', (e) => {
     const reader = new FileReader();
 
     reader.onload = (event) => {
-      customWallpaperData = {
+      setState('customWallpaper', {
         type: isVideo ? 'video' : 'image',
         url: event.target.result
-      };
-      Storage.set('ntp_custom_wallpaper', customWallpaperData);
+      });
       applyBackgroundState();
     };
 
@@ -976,8 +1003,7 @@ fileInputRestore?.addEventListener('change', (e) => {
   });
 
   btnRemoveWallpaper?.addEventListener('click', () => {
-    customWallpaperData = null;
-    Storage.set('ntp_custom_wallpaper', null);
+    setState('customWallpaper', null);
     applyBackgroundState();
   });
 
@@ -1003,11 +1029,9 @@ fileInputRestore?.addEventListener('change', (e) => {
         if (!url.startsWith('http://') && !url.startsWith('https://')) {
           url = 'https://' + url;
         }
-        customWallpaperData = { type: 'image', url: url };
-        Storage.set('ntp_custom_wallpaper', customWallpaperData);
-        if (!bgEnabled) {
-          bgEnabled = true;
-          Storage.set('ntp_bg_enabled', true);
+        setState('customWallpaper', { type: 'image', url: url });
+        if (!state.bgEnabled) {
+          setState('bgEnabled', true);
         }
         applyBackgroundState();
         if (toggleBgSwitch) toggleBgSwitch.checked = true;
@@ -1072,11 +1096,9 @@ fileInputRestore?.addEventListener('change', (e) => {
 
   // 判断类型（根据文件扩展名）
   const isVideo = /\.(mp4|webm|ogg|mov|avi|mkv)$/i.test(url);
-  customWallpaperData = { type: isVideo ? 'video' : 'image', url: url };
-  Storage.set('ntp_custom_wallpaper', customWallpaperData);
-  if (!bgEnabled) {
-    bgEnabled = true;
-    Storage.set('ntp_bg_enabled', true);
+  setState('customWallpaper', { type: isVideo ? 'video' : 'image', url: url });
+  if (!state.bgEnabled) {
+    setState('bgEnabled', true);
   }
   applyBackgroundState();
   if (toggleBgSwitch) toggleBgSwitch.checked = true;
@@ -1102,14 +1124,14 @@ inputOnlineUrl?.addEventListener('input', () => {
       }
     });
   }
-  updateLayoutPresetUI(savedLayout);
+  updateLayoutPresetUI(state.layout);
 
   // 布局卡片点击监听
   document.querySelectorAll('.preset-card').forEach(card => {
     card.addEventListener('click', () => {
       const layoutVal = card.dataset.layoutVal;
       document.body.setAttribute('data-layout', layoutVal);
-      Storage.set('ntp_layout', layoutVal);
+      setState('layout', layoutVal);
       updateLayoutPresetUI(layoutVal);
     });
   });
@@ -1120,15 +1142,14 @@ inputOnlineUrl?.addEventListener('input', () => {
     setLogo(val);
     updateEngineEditButton(val);
     updateForceBingCNRow(val);
-    Storage.set('ntp_engine', val);
-    if (val === 'custom' && (!customEngineConfig.url || customEngineConfig.url === 'https://duckduckgo.com/?q=%s')) {
+    setState('engine', val);
+    if (val === 'custom' && (!state.customEngineConfig.url || state.customEngineConfig.url === 'https://duckduckgo.com/?q=%s')) {
       openCustomEngineModal();
     }
   });
 
   toggleForceBingCN?.addEventListener('change', (e) => {
-    forceBingCN = e.target.checked;
-    Storage.set('ntp_force_bing_cn', forceBingCN);
+    setState('forceBingCN', e.target.checked);
     updateStatusTexts(); 
   });
 
@@ -1137,8 +1158,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   });
 
   toggleHistorySwitch?.addEventListener('change', (e) => {
-    historyEnabled = e.target.checked;
-    Storage.set('ntp_history_enabled', historyEnabled);
+    setState('historyEnabled', e.target.checked);
     updateStatusTexts();
     fetchAndShowSuggestions();
   });
@@ -1146,7 +1166,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   selectQuicklinks?.addEventListener('change', (e) => {
     const val = e.target.value;
     quicklinksElem?.setAttribute('rows', val);
-    Storage.set('ntp_quicklinks', val);
+    setState('quicklinksRow', val);
     renderQuicklinks();//（测试）修复无法加载
   });
 
@@ -1155,14 +1175,13 @@ inputOnlineUrl?.addEventListener('input', () => {
   const statusTimeCapsuleText = document.getElementById('status-time-capsule');
 
   if (toggleTimeCapsuleSwitch) {
-    toggleTimeCapsuleSwitch.checked = showTimeCapsule;
+    toggleTimeCapsuleSwitch.checked = state.showTimeCapsule;
     if (statusTimeCapsuleText) {
-      statusTimeCapsuleText.innerText = showTimeCapsule ? '开' : '关';
+      statusTimeCapsuleText.innerText = state.showTimeCapsule ? '开' : '关';
     }
 
     toggleTimeCapsuleSwitch.addEventListener('change', (e) => {
-      showTimeCapsule = e.target.checked;
-      Storage.set('ntp_show_time_capsule', showTimeCapsule);
+      setState('showTimeCapsule', e.target.checked);
       updateStatusTexts();
       applyTimeCapsuleVisibility();
     });
@@ -1173,21 +1192,20 @@ inputOnlineUrl?.addEventListener('input', () => {
   const statusMenuButtonText = document.getElementById('status-menu-button');
 
   if (toggleMenuButtonSwitch) {
-    toggleMenuButtonSwitch.checked = showMenuButton;
+    toggleMenuButtonSwitch.checked = state.showMenuButton;
     if (statusMenuButtonText) {
-      statusMenuButtonText.innerText = showMenuButton ? '开' : '关';
+      statusMenuButtonText.innerText = state.showMenuButton ? '开' : '关';
     }
 
     toggleMenuButtonSwitch.addEventListener('change', (e) => {
-      showMenuButton = e.target.checked;
-      Storage.set('ntp_show_menu_button', showMenuButton);
+      setState('showMenuButton', e.target.checked);
       updateStatusTexts();
       applyMenuButtonVisibility();
     });
   }
 
   // 如果初始状态是开启，启动定时器并显示
-  if (showTimeCapsule) {
+  if (state.showTimeCapsule) {
     applyTimeCapsuleVisibility();
   }
   // 应用菜单按钮初始可见性
@@ -1196,8 +1214,8 @@ inputOnlineUrl?.addEventListener('input', () => {
   // 自定义搜索引擎对话框逻辑
   // 打开/重置自定义搜索引擎编辑弹窗
   function openCustomEngineModal() {
-    if (inputEngineName) inputEngineName.value = customEngineConfig.name || '';
-    if (inputEngineUrl) inputEngineUrl.value = customEngineConfig.url || '';
+    if (inputEngineName) inputEngineName.value = state.customEngineConfig.name || '';
+    if (inputEngineUrl) inputEngineUrl.value = state.customEngineConfig.url || '';
     containerEngineName?.classList.remove('error');
     containerEngineUrl?.classList.remove('error');
     tipEngineName?.classList.remove('active');
@@ -1245,14 +1263,11 @@ inputOnlineUrl?.addEventListener('input', () => {
 
     if (hasError) return;
 
-    customEngineConfig = { name, url };
-    Storage.set('ntp_custom_engine_config', customEngineConfig);
+    setState('customEngineConfig', { name, url });
     closeCustomEngineModal();
   });
 
   // B2.快速链接列表管理
-  let quicklinksList = Storage.get('ntp_quicklinks_list', []);
-
   function renderQuicklinks() {
   if (!quicklinksElem) return;
   const rows = quicklinksElem.getAttribute('rows');
@@ -1288,7 +1303,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   }
 
   // 渲染已有的快速链接
-  quicklinksList.forEach(item => {
+  state.quicklinksList.forEach(item => {
     const linkElem = document.createElement('a');
     linkElem.href = item.url;
     linkElem.className = 'quicklink-item';
@@ -1397,19 +1412,19 @@ function onDrop(e) {
   }
 
   // 查找两个元素在数组中的位置
-  const draggedIndex = quicklinksList.findIndex(item => item.id === draggedId);
-  const targetIndex = quicklinksList.findIndex(item => item.id === targetId);
+  const draggedIndex = state.quicklinksList.findIndex(item => item.id === draggedId);
+  const targetIndex = state.quicklinksList.findIndex(item => item.id === targetId);
 
   if (draggedIndex === -1 || targetIndex === -1) {
     return;
   }
 
   // 交换位置（将 draggedItem 移动到 targetIndex 位置）
-  const [draggedItem] = quicklinksList.splice(draggedIndex, 1);
-  quicklinksList.splice(targetIndex, 0, draggedItem);
+  const [draggedItem] = state.quicklinksList.splice(draggedIndex, 1);
+  state.quicklinksList.splice(targetIndex, 0, draggedItem);
 
   // 持久化并重新渲染
-  Storage.set('ntp_quicklinks_list', quicklinksList);
+  setState('quicklinksList', state.quicklinksList);
   renderQuicklinks();
 }
 // ========== 拖拽事件处理函数结束 ==========
@@ -1479,8 +1494,7 @@ function onDrop(e) {
 
   btnDelete?.addEventListener('click', () => {
     if (currentEditingId) {
-      quicklinksList = quicklinksList.filter(item => item.id !== currentEditingId);
-      Storage.set('ntp_quicklinks_list', quicklinksList);
+      setState('quicklinksList', state.quicklinksList.filter(item => item.id !== currentEditingId));
       renderQuicklinks();
       closeModal();
     }
@@ -1520,9 +1534,9 @@ function onDrop(e) {
     }
 
     if (currentEditingId) {
-      const itemIndex = quicklinksList.findIndex(item => item.id === currentEditingId);
+      const itemIndex = state.quicklinksList.findIndex(item => item.id === currentEditingId);
       if (itemIndex !== -1) {
-        quicklinksList[itemIndex] = { ...quicklinksList[itemIndex], title, url };
+        state.quicklinksList[itemIndex] = { ...state.quicklinksList[itemIndex], title, url };
       }
     } else {
       const newItem = {
@@ -1530,10 +1544,10 @@ function onDrop(e) {
         title,
         url
       };
-      quicklinksList.push(newItem);
+      state.quicklinksList.push(newItem);
     }
 
-    Storage.set('ntp_quicklinks_list', quicklinksList);
+    setState('quicklinksList', state.quicklinksList);
     renderQuicklinks();
     closeModal();
   });
@@ -1543,21 +1557,20 @@ function onDrop(e) {
   // B4.搜索框历史记录与搜索建议词条
   clearHistoryBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    searchHistory = [];
-    Storage.set('ntp_search_history', []);
+    setState('searchHistory', []);
     fetchAndShowSuggestions();
   });
 
   // 将搜索关键词存入历史记录（去重、限长50条）
   function saveSearchHistory(query) {
-    if (!historyEnabled || !query) return;
+    if (!state.historyEnabled || !query) return;
     const safeQuery = sanitizeInput(query);
-    searchHistory = searchHistory.filter(item => item.toLowerCase() !== safeQuery.toLowerCase());
-    searchHistory.unshift(safeQuery);
-    if (searchHistory.length > 50) {
-      searchHistory.pop();
+    const newHistory = state.searchHistory.filter(item => item.toLowerCase() !== safeQuery.toLowerCase());
+    newHistory.unshift(safeQuery);
+    if (newHistory.length > 50) {
+      newHistory.pop();
     }
-    Storage.set('ntp_search_history', searchHistory);
+    setState('searchHistory', newHistory);
   }
 
   const historySvgIcon = `<svg width="18" height="18" viewBox="0 0 24 24"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6a7 7 0 1 1 7 7 7.07 7.07 0 0 1-6-3.37l-1.44 1.44A8.95 8.95 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>`;
@@ -1643,11 +1656,11 @@ function onDrop(e) {
     const query = searchInput.value.trim();
 
     let matchedHistory = [];
-    if (historyEnabled) {
+    if (state.historyEnabled) {
       if (query) {
-        matchedHistory = searchHistory.filter(h => h.toLowerCase().includes(query.toLowerCase())).slice(0, 5);
+        matchedHistory = state.searchHistory.filter(h => h.toLowerCase().includes(query.toLowerCase())).slice(0, 5);
       } else {
-        matchedHistory = searchHistory.slice(0, 5);
+        matchedHistory = state.searchHistory.slice(0, 5);
       }
     }
 
@@ -1760,11 +1773,11 @@ searchInput?.addEventListener('input', () => {
       const engine = selectEngine ? selectEngine.value : 'bing';
       let targetUrl = '';
 
-      if (engine === 'custom' && customEngineConfig.url) {
-        targetUrl = customEngineConfig.url.replace('%s', encodeURIComponent(query));
+      if (engine === 'custom' && state.customEngineConfig.url) {
+        targetUrl = state.customEngineConfig.url.replace('%s', encodeURIComponent(query));
       } else {
         let baseUrl = engineSearchUrls[engine] || engineSearchUrls.bing;
-        if (engine === 'bing' && forceBingCN) {
+        if (engine === 'bing' && state.forceBingCN) {
           baseUrl = bingCNSearchUrl;
         }
         targetUrl = baseUrl + encodeURIComponent(query);
