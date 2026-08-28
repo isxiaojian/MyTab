@@ -1,5 +1,5 @@
 import { state, setState } from './storage.js';
-import { updateStatusTexts, sanitizeInput } from './utils.js';
+import { updateStatusTexts, sanitizeInput, showModal, hideModal, bindOverlayClose } from './utils.js';
 
 // ===== 背景/壁纸模块 =====
 // DOM 引用（type=module 为 defer，模块加载时 DOM 已就绪）
@@ -107,7 +107,7 @@ function renderWallpaper() {
 
 // 关闭自定义 URL 在线壁纸弹窗
 function closeOnlineModal() {
-  modalOnlineWallpaper?.classList.remove('active');
+  hideModal(modalOnlineWallpaper);
   containerOnlineUrl?.classList.remove('error');
   tipOnlineUrl?.classList.remove('active');
 }
@@ -139,13 +139,13 @@ export function initWallpaper() {
   // 壁纸弹窗逻辑
   btnOpenBgModal?.addEventListener('click', () => {
     popoverSettings?.classList.remove('active');
-    modalWallpaper?.classList.add('active');
+    showModal(modalWallpaper);
     renderWallpaper();
     updateStatusTexts();
   });
 
   btnCloseWallpaperModal?.addEventListener('click', () => {
-    modalWallpaper?.classList.remove('active');
+    hideModal(modalWallpaper);
   });
 
   btnUploadWallpaper?.addEventListener('click', () => {
@@ -207,16 +207,14 @@ export function initWallpaper() {
     inputOnlineUrl.value = '';
     containerOnlineUrl?.classList.remove('error');
     tipOnlineUrl?.classList.remove('active');
-    modalOnlineWallpaper?.classList.add('active');
+    showModal(modalOnlineWallpaper);
     setTimeout(() => inputOnlineUrl?.focus(), 50);
   });
 
   btnOnlineCancel?.addEventListener('click', closeOnlineModal);
 
   // 点击遮罩关闭
-  modalOnlineWallpaper?.addEventListener('click', (e) => {
-    if (e.target === modalOnlineWallpaper) closeOnlineModal();
-  });
+  bindOverlayClose(modalOnlineWallpaper, closeOnlineModal);
 
   // 表单提交
   onlineWallpaperForm?.addEventListener('submit', (e) => {

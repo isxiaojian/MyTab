@@ -66,4 +66,28 @@ function updateStatusTexts() {
   setStatus('status-enhanced-visibility', 'toggle-enhanced-visibility');
 }
 
-export { getDomain, getFaviconUrl, sanitizeInput, decodeInput, debounce, updateStatusTexts };
+// 显示 modal 遮罩
+function showModal(el) {
+  el?.classList.add('active');
+}
+
+// 隐藏 modal 遮罩
+function hideModal(el) {
+  el?.classList.remove('active');
+}
+
+// 绑定点击遮罩关闭：点击遮罩空白区域（非内容）时触发
+// 可传入 onClose 自定义关闭行为，默认仅移除 active class
+function bindOverlayClose(el, onClose) {
+  el?.addEventListener('click', (e) => {
+    if (e.target === el) {
+      if (onClose) {
+        onClose();
+      } else {
+        el.classList.remove('active');
+      }
+    }
+  });
+}
+
+export { getDomain, getFaviconUrl, sanitizeInput, decodeInput, debounce, updateStatusTexts, showModal, hideModal, bindOverlayClose };

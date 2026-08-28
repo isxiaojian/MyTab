@@ -1,5 +1,5 @@
 import { state, loadState, setState } from './storage.js';
-import { updateStatusTexts, sanitizeInput } from './utils.js';
+import { updateStatusTexts, sanitizeInput, showModal, hideModal, bindOverlayClose } from './utils.js';
 import { initWallpaper } from './wallpaper.js';
 import { initQuicklinks } from './quicklinks.js';
 import { initSearch, fetchAndShowSuggestions } from './search.js';
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 初始化配置 - 打开重置确认弹窗
 document.getElementById('btn-init-config')?.addEventListener('click', () => {
   popoverWaffle?.classList.remove('active');
-  document.getElementById('modal-reset-confirm')?.classList.add('active');
+  showModal(document.getElementById('modal-reset-confirm'));
 });
 
 // ===== 重置确认弹窗事件 =====
@@ -560,7 +560,7 @@ const btnResetConfirm = document.getElementById('btn-reset-confirm');
 
 // 取消按钮
 btnResetCancel?.addEventListener('click', () => {
-  modalResetConfirm?.classList.remove('active');
+  hideModal(modalResetConfirm);
 });
 
 // 确定按钮 - 执行重置
@@ -572,9 +572,9 @@ btnResetConfirm?.addEventListener('click', () => {
       localStorage.removeItem(key);
     }
   });
-  modalResetConfirm?.classList.remove('active');
+  hideModal(modalResetConfirm);
   // 显示完成弹窗
-  document.getElementById('modal-reset-done')?.classList.add('active');
+  showModal(document.getElementById('modal-reset-done'));
 });
 
 // 完成弹窗 - 刷新页面
@@ -583,11 +583,7 @@ document.getElementById('btn-reset-done-confirm')?.addEventListener('click', () 
 });
 
 // 点击遮罩也可刷新
-document.getElementById('modal-reset-done')?.addEventListener('click', (e) => {
-  if (e.target === document.getElementById('modal-reset-done')) {
-    window.location.reload();
-  }
-});
+bindOverlayClose(document.getElementById('modal-reset-done'), () => window.location.reload());
 
 // ===== 管理配置文件 - 导出/恢复 =====
 const modalManageProfiles = document.getElementById('modal-manage-profiles');
@@ -600,18 +596,16 @@ const fileInputRestore = document.getElementById('file-input-restore');
 // 打开管理配置文件弹窗
 btnManageProfiles?.addEventListener('click', () => {
   popoverWaffle?.classList.remove('active');
-  modalManageProfiles?.classList.add('active');
+  showModal(modalManageProfiles);
 });
 
 // 取消按钮
 btnManageProfilesCancel?.addEventListener('click', () => {
-  modalManageProfiles?.classList.remove('active');
+  hideModal(modalManageProfiles);
 });
 
 // 点击遮罩关闭
-modalManageProfiles?.addEventListener('click', (e) => {
-  if (e.target === modalManageProfiles) modalManageProfiles.classList.remove('active');
-});
+bindOverlayClose(modalManageProfiles);
 
 // 导出配置
 btnExportConfig?.addEventListener('click', () => {
@@ -794,13 +788,13 @@ fileInputRestore?.addEventListener('change', (e) => {
     containerEngineUrl?.classList.remove('error');
     tipEngineName?.classList.remove('active');
     tipEngineUrl?.classList.remove('active');
-    customEngineModal?.classList.add('active');
+    showModal(customEngineModal);
     setTimeout(() => inputEngineName?.focus(), 50);
   }
 
   // 关闭自定义搜索引擎编辑弹窗
   function closeCustomEngineModal() {
-    customEngineModal?.classList.remove('active');
+    hideModal(customEngineModal);
   }
 
   btnEngineCancel?.addEventListener('click', closeCustomEngineModal);

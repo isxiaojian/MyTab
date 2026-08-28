@@ -1,5 +1,5 @@
 import { state, setState } from './storage.js';
-import { getDomain, getFaviconUrl, sanitizeInput } from './utils.js';
+import { getDomain, getFaviconUrl, sanitizeInput, showModal, hideModal } from './utils.js';
 
 // ===== 快速链接模块 =====
 // DOM 引用（type=module 为 defer，模块加载时 DOM 已就绪）
@@ -197,7 +197,7 @@ function openAddModal() {
   if (inputUrl) inputUrl.value = '';
   clearErrors();
   if (btnDelete) btnDelete.style.display = 'none';
-  modalOverlay?.classList.add('active');
+  showModal(modalOverlay);
   setTimeout(() => inputName?.focus(), 50);
 }
 
@@ -207,12 +207,12 @@ function openEditModal(item) {
   if (inputUrl) inputUrl.value = item.url;
   clearErrors();
   if (btnDelete) btnDelete.style.display = 'inline-flex';
-  modalOverlay?.classList.add('active');
+  showModal(modalOverlay);
   setTimeout(() => inputName?.focus(), 50);
 }
 
 function closeModal() {
-  modalOverlay?.classList.remove('active');
+  hideModal(modalOverlay);
   currentEditingId = null;
   clearErrors();
 }
