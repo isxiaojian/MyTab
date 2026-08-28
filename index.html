@@ -11,7 +11,7 @@
       document.write('<link rel="icon" id="favicon" type="image/png" href="' + icon + '?r=' + Math.random() + '" />');
     })();
     </script>
-    <title data-i18n="pageTitle">新标签页</title>
+    <title>新标签页</title>
     <meta name="description" content="可定制的浏览器类原生起始页-简洁无需多言" />
     <style>
     /* 配色系统与全局 CSS 变量 */
@@ -1546,7 +1546,7 @@
     }
 
 
-    /* 个人资料菜单配置 */
+    /* 菜单面板配置 */
     #popover-waffle {
     left: 22px;
     width: 340px;
@@ -1612,39 +1612,21 @@
           <div id="popover-waffle" class="popover-panel" style="background-color: var(--settings-panel-bg); padding: 0; overflow: hidden;">
             <div style="padding: 12px;">
 
-            <!-- 个人资料卡片 -->
-            <div class="settings-card" style="margin-bottom: 12px;">
-              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-              <img id="profile-avatar" src="img/profiles.png" alt="头像" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background-color: var(--settings-thumb-bg); flex-shrink: 0; border: 2px solid var(--settings-card-border);">
-              <div style="flex:1; min-width:0;">
-              <div id="profile-name" style="font-weight: 600; font-size: 15px; color: var(--settings-text-primary);">个人</div>
-              <div id="profile-description" style="font-size: 13px; color: var(--settings-text-secondary);">本地账户</div>
-              </div>
-            </div>
-
-            <!-- 账户编辑按钮 -->
-            <button id="btn-profile-details" class="icon-btn-text" type="button" style="margin-top: 2px;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M10.529 1.764a2.621 2.621 0 1 1 3.707 3.707l-.779.779L9.75 2.543zM9.043 3.25L2.657 9.636a2.96 2.96 0 0 0-.772 1.354l-.87 3.386a.5.5 0 0 0 .61.608l3.385-.869a2.95 2.95 0 0 0 1.354-.772l6.386-6.386z"/>
-            </svg>
-            <span data-i18n="accountDetails">编辑账户信息</span>
-            </button>
-            </div>
             <!-- 下方菜单项 -->
             <div class="waffle-menu-item" id="btn-manage-profiles" style="margin-bottom: 4px;">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="128" height="128"><path d="M1 3.25C1 2.56 1.56 2 2.249 2h.5c.69 0 1.248.56 1.248 1.25v9.495c0 .69-.559 1.25-1.248 1.25h-.5A1.25 1.25 0 0 1 1 12.744zM2.249 3a.25.25 0 0 0-.25.25v9.495c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25V3.249a.25.25 0 0 0-.25-.25zm2.748.25c0-.69.559-1.25 1.249-1.25h.5c.689 0 1.248.56 1.248 1.25v9.495c0 .69-.56 1.25-1.249 1.25h-.5a1.25 1.25 0 0 1-1.248-1.25zM6.246 3a.25.25 0 0 0-.25.25v9.495c0 .138.112.25.25.25h.5a.25.25 0 0 0 .249-.25V3.249a.25.25 0 0 0-.25-.25zm5.726 1.777a1.25 1.25 0 0 0-1.57-.713l-.583.204a1.25 1.25 0 0 0-.746 1.645l2.937 7.304c.249.62.94.933 1.571.713l.582-.204a1.25 1.25 0 0 0 .746-1.646zm-1.24.23a.25.25 0 0 1 .313.143l2.937 7.303a.25.25 0 0 1-.149.33l-.582.203a.25.25 0 0 1-.314-.142L10 5.54a.25.25 0 0 1 .149-.329z"/></svg>
-              <span data-i18n="manageProfiles">管理配置文件</span>
+              <span>管理配置文件</span>
             </div>
             <div class="waffle-menu-item" id="btn-init-config">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="128" height="128"><path d="M13 8a5 5 0 0 0-9.001-3h2a.5.5 0 1 1 0 1H3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 1 0v1.531a6 6 0 1 1-1.476 4.513a.5.5 0 0 1 .997-.089A5 5 0 0 0 13 8"/></svg>
-              <span data-i18n="initConfig">初始化配置</span>
+              <span>初始化配置</span>
             </div>
             </div>
           </div>
         </div>
 
         <div id="header-right">
-          <button id="settings" class="header-button" type="button" aria-label="设置" title="设置" data-i18n-title="settingsTitle">
+          <button id="settings" class="header-button" type="button" aria-label="设置" title="设置">
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.01 2.25c.74 0 1.47.1 2.18.25.32.07.55.33.59.65l.17 1.53a1.38 1.38 0 001.92 1.11l1.4-.61c.3-.13.64-.06.85.17a9.8 9.8 0 012.2 3.8c.1.3 0 .63-.26.82l-1.24.92a1.38 1.38 0 000 2.22l1.24.92c.26.19.36.52.27.82a9.8 9.8 0 01-2.2 3.8.75.75 0 01-.85.17l-1.4-.62a1.38 1.38 0 00-1.93 1.12l-.17 1.52a.75.75 0 01-.58.65 9.52 9.52 0 01-4.4 0 .75.75 0 01-.57-.65l-.17-1.52a1.38 1.38 0 00-1.93-1.11l-1.4.62a.75.75 0 01-.85-.18 9.8 9.8 0 01-2.2-3.8c-.1-.3 0-.63.27-.82l1.24-.92a1.38 1.38 0 000-2.22l-1.24-.92a.75.75 0 01-.28-.82 9.8 9.8 0 012.2-3.8c.23-.23.57-.3.86-.17l1.4.62c.4.17.86.15 1.25-.08.38-.22.63-.6.68-1.04l.17-1.53a.75.75 0 01.58-.65c.72-.16 1.45-.24 2.2-.25zm0 1.5c-.45 0-.9.04-1.35.12l-.11.97a2.89 2.89 0 01-4.02 2.33l-.9-.4A8.3 8.3 0 004.28 9.1l.8.59a2.88 2.88 0 010 4.64l-.8.59a8.3 8.3 0 001.35 2.32l.9-.4a2.88 2.88 0 014.02 2.32l.1.99c.9.15 1.8.15 2.7 0l.1-.99a2.88 2.88 0 014.02-2.32l.9.4a8.3 8.3 0 001.36-2.32l-.8-.59a2.88 2.88 0 010-4.64l.8-.59a8.3 8.3 0 00-1.35-2.32l-.9.4a2.88 2.88 0 01-4.02-2.32l-.11-.98c-.45-.08-.9-.11-1.34-.12zM12 8.25a3.75 3.75 0 110 7.5 3.75 3.75 0 010-7.5zm0 1.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z">
               </path>
@@ -1654,8 +1636,8 @@
           <!-- 设置弹窗面板 -->
           <div id="popover-settings" class="popover-panel">
             <div class="settings-header">
-              <h2 class="settings-title" data-i18n="settingsTitle">页面设置</h2>
-              <button class="settings-close-btn" id="btn-close-settings" title="关闭" data-i18n-title="close">
+              <h2 class="settings-title">页面设置</h2>
+              <button class="settings-close-btn" id="btn-close-settings" title="关闭">
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M2.22 2.22a.75.75 0 0 1 1.06 0L8 6.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L9.06 8l4.72 4.72a.75.75 0 1 1-1.06 1.06L8 9.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L6.94 8 2.22 3.28a.75.75 0 0 1 0-1.06z"/>
                 </svg>
@@ -1665,12 +1647,12 @@
             <div class="settings-content">
               <!-- 快速链接 -->
               <div class="settings-card">
-                  <div class="settings-card-title" data-i18n="quicklinks">快速链接</div>
+                  <div class="settings-card-title">快速链接</div>
                   <div class="custom-select-wrapper">
                     <select id="select-quicklinks" class="select-box" tabindex="-1">
-                      <option value="0" data-i18n="off">关闭</option>
-                      <option value="1" data-i18n="rows1">1 行</option>
-                      <option value="2" data-i18n="rows2">2 行</option>
+                      <option value="0">关闭</option>
+                      <option value="1">1 行</option>
+                      <option value="2">2 行</option>
                     </select>
                     <div class="custom-select-display" data-for="select-quicklinks">
                       <span class="custom-select-text"></span>
@@ -1681,13 +1663,13 @@
                   </div>
               </div>
               <div class="settings-card">
-                <div class="settings-card-title" data-i18n="searchEngine">搜索引擎</div>
+                <div class="settings-card-title">搜索引擎</div>
                 <div class="custom-select-wrapper">
                   <select id="select-engine" class="select-box" tabindex="-1">
-                    <option value="bing" data-i18n="bing">Bing</option>
-                    <option value="baidu" data-i18n="baidu">Baidu</option>
+                    <option value="bing">Bing</option>
+                    <option value="baidu">Baidu</option>
                     <option value="google">Google</option>
-                    <option value="custom" data-i18n="custom">自定义</option>
+                    <option value="custom">自定义</option>
                   </select>
                   <div class="custom-select-display" data-for="select-engine">
                     <span class="custom-select-text"></span>
@@ -1698,20 +1680,20 @@
                 </div>
                 <button id="btn-edit-engine" class="icon-btn-text" style="display:none;" type="button">
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.93-3.25a1.75 1.75 0 0 1 .445-.758l8.61-8.609z"/></svg>
-                  <span data-i18n="editCustomEngine">编辑自定义搜索引擎</span>
+                  <span>编辑自定义搜索引擎</span>
                 </button>
                 <div id="force-bing-cn-row" class="setting-row" style="display:none; margin-top: 8px;">
                   <div class="setting-label-group">
-                    <span data-i18n="forceBingCN">强制使用必应中国版</span>
+                    <span>强制使用必应中国版</span>
                     <span class="tooltip-icon" tabindex="0">
                       <svg width="18" height="18" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true" style="margin-top: 3px; margin-left: -2px;">
                         <path d="M509.92 795.84c157.904 0 285.92-128.016 285.92-285.92C795.84 352 667.808 224 509.92 224 352 224 224 352 224 509.92c0 157.904 128 285.92 285.92 285.92z m0 48C325.504 843.84 176 694.32 176 509.92 176 325.504 325.504 176 509.92 176c184.416 0 333.92 149.504 333.92 333.92 0 184.416-149.504 333.92-333.92 333.92z m-2.448-400.704h16a16 16 0 0 1 16 16v201.728a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16V459.136a16 16 0 0 1 16-16z m0-100.176h16a16 16 0 0 1 16 16v23.648a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16v-23.648a16 16 0 0 1 16-16z"/>
                       </svg>
-                      <span class="tooltip-content" data-i18n-html="forceBingCNDesc"><span class="tooltip-arrow"></span><b>开启</b>：强制使用必应中国版<br><b>关闭</b>：根据网络环境自动选择。<br>此选项可以避免代理设置导致 www.bing.com 无法自动跳转到 cn.bing.com。</span>
+                      <span class="tooltip-content"><span class="tooltip-arrow"></span><b>开启</b>：强制使用必应中国版<br><b>关闭</b>：根据网络环境自动选择。<br>此选项可以避免代理设置导致 www.bing.com 无法自动跳转到 cn.bing.com。</span>
                     </span>
                   </div>
                   <div class="switch-container">
-                    <span class="setting-status-text" id="status-force-bing-cn" data-i18n="off">关闭</span>
+                    <span class="setting-status-text" id="status-force-bing-cn">关闭</span>
                     <label class="switch">
                       <input type="checkbox" id="toggle-force-bing-cn">
                       <span class="slider"></span>
@@ -1723,9 +1705,9 @@
               <!-- 搜索历史记录开关 -->
               <div class="settings-card">
                 <div class="setting-row">
-                  <div class="setting-label-group" data-i18n="saveHistory">保存搜索历史记录</div>
+                  <div class="setting-label-group">保存搜索历史记录</div>
                   <div class="switch-container">
-                    <span class="setting-status-text" id="status-history" data-i18n="on">打开</span>
+                    <span class="setting-status-text" id="status-history">打开</span>
                     <label class="switch">
                       <input type="checkbox" id="toggle-history-switch" checked>
                       <span class="slider"></span>
@@ -1737,21 +1719,21 @@
               <!-- 页面布局视图选择 -->
               <div class="settings-card">
                 <div class="settings-card-header">
-                  <span data-i18n="layout">页面布局</span>
+                  <span>页面布局</span>
                 </div>
                 <div class="layout-presets">
                   <div class="preset-card" data-layout-val="inspirational" id="preset-inspirational">
                     <div class="preset-thumb">
                       <div class="preset-thumb-bar" style="top: 10px;"></div>
                     </div>
-                    <span class="preset-card-label" data-i18n="inspirational">展望</span>
+                    <span class="preset-card-label">展望</span>
                   </div>
                   <div class="preset-card" data-layout-val="focused" id="preset-focused">
                     <div class="preset-thumb">
                       <div class="preset-thumb-bar" style="top: 17px"></div>
                       <div class="preset-thumb-box" style="bottom: 14px"></div>
                     </div>
-                    <span class="preset-card-label" data-i18n="focused">聚焦</span>
+                    <span class="preset-card-label">聚焦</span>
                   </div>
                 </div>
               </div>
@@ -1759,9 +1741,9 @@
               <!-- 背景设置卡片 -->
               <div class="settings-card">
                 <div class="setting-row" style="margin-bottom: 8px;">
-                  <div class="setting-label-group" data-i18n="background">背景</div>
+                  <div class="setting-label-group">背景</div>
                   <div class="switch-container">
-                    <span class="setting-status-text" id="status-bg" data-i18n="off">关闭</span>
+                    <span class="setting-status-text" id="status-bg">关闭</span>
                     <label class="switch">
                       <input type="checkbox" id="toggle-bg-switch">
                       <span class="slider"></span>
@@ -1769,12 +1751,12 @@
                   </div>
                 </div>
                 <button id="btn-open-bg-modal" class="icon-btn-text" type="button">
-                  <span data-i18n="editBackground">编辑背景</span>
+                  <span>编辑背景</span>
                 </button>
                 <div id="enhanced-visibility-row" class="setting-row" style="display:none; margin-top: 8px;">
-                  <div class="setting-label-group" data-i18n="enhancedVisibility">增强元素可见性</div>
+                  <div class="setting-label-group">增强元素可见性</div>
                   <div class="switch-container">
-                    <span class="setting-status-text" id="status-enhanced-visibility" data-i18n="off">关闭</span>
+                    <span class="setting-status-text" id="status-enhanced-visibility">关闭</span>
                     <label class="switch">
                       <input type="checkbox" id="toggle-enhanced-visibility">
                       <span class="slider"></span>
@@ -1788,9 +1770,9 @@
               <div class="settings-card">
 
                   <div class="setting-row">
-                    <div class="setting-label-group" data-i18n="showMenuButton">显示菜单按钮</div>
+                    <div class="setting-label-group">显示菜单按钮</div>
                       <div class="switch-container">
-                        <span class="setting-status-text" id="status-menu-button" data-i18n="on">打开</span>
+                        <span class="setting-status-text" id="status-menu-button">打开</span>
                           <label class="switch">
                             <input type="checkbox" id="toggle-menu-button-switch" checked>
                             <span class="slider"></span>
@@ -1799,9 +1781,9 @@
                     </div>
 
                   <div class="setting-row" style="margin-top: 10px;">
-                    <div class="setting-label-group" data-i18n="showTimeCapsule">显示时间</div>
+                    <div class="setting-label-group">显示时间</div>
                       <div class="switch-container">
-                        <span class="setting-status-text" id="status-time-capsule" data-i18n="off">关闭</span>
+                        <span class="setting-status-text" id="status-time-capsule">关闭</span>
                           <label class="switch">
                             <input type="checkbox" id="toggle-time-capsule-switch">
                             <span class="slider"></span>
@@ -1815,16 +1797,16 @@
             <!-- 底部版权/链接区域 -->
             <div class="settings-footer">
               <div class="settings-footer-links">
-                <a href="https://github.com/isxiaojian/MyTab/blob/main/PRIVACY_POLICY.md" data-i18n="cookieNotice">隐私与 Cookie</a> · 
-                <a href="https://github.com/isxiaojian/MyTab/blob/main/LICENSE" data-i18n="license">开源协议</a> ·  
-                <a href="https://github.com/isxiaojian/MyTab/graphs/contributors?from=2026%2F5%2F23" data-i18n="contributor">贡献名单</a> · 
-                <a href="https://github.com/isxiaojian/MyTab/issues" data-i18n="helpFeedback">帮助&反馈</a>
+                <a href="https://github.com/isxiaojian/MyTab/blob/main/PRIVACY_POLICY.md">隐私与 Cookie</a> · 
+                <a href="https://github.com/isxiaojian/MyTab/blob/main/LICENSE">开源协议</a> ·  
+                <a href="https://github.com/isxiaojian/MyTab/graphs/contributors?from=2026%2F5%2F23">贡献名单</a> · 
+                <a href="https://github.com/isxiaojian/MyTab/issues">帮助&反馈</a>
                 
               </div>
               <div class="settings-footer-links">
-                <a href="https://github.com/isxiaojian/MyTab" target="_blank">MyTab 0.1.0</a>| <span data-i18n="presentedBy">由</span> <a href="https://github.com/isxiaojian" target="_blank" data-i18n="author">isxiaojian</a> <span data-i18n="forYou">为您呈现</span>
+                <a href="https://github.com/isxiaojian/MyTab" target="_blank">MyTab 0.1.0</a>| <span>由</span> <a href="https://github.com/isxiaojian" target="_blank">isxiaojian</a> <span>为您呈现</span>
               </div>
-              <div class="settings-footer-text" style="opacity: 0.8;" data-i18n="disclaimer">
+              <div class="settings-footer-text" style="opacity: 0.8;">
                 请注意，此网页与 Microsoft 无关。
               </div>
             </div>
@@ -1839,22 +1821,22 @@
 
         <!-- 搜索框容器 -->
         <div id="search-container">
-          <div id="fakebox" role="searchbox" tabindex="0" aria-label="搜索或输入 Web 地址" data-i18n-aria="searchPlaceholder">
+          <div id="fakebox" role="searchbox" tabindex="0" aria-label="搜索或输入 Web 地址">
             <svg aria-hidden="true" id="searchbutton" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 2.75a7.25 7.25 0 015.63 11.82l4.9 4.9a.75.75 0 01-.98 1.13l-.08-.07-4.9-4.9A7.25 7.25 0 1110 2.75zm0 1.5a5.75 5.75 0 100 11.5 5.75 5.75 0 000-11.5z">
               </path>
             </svg>
-            <div id="placeholder" aria-hidden="true" data-i18n="searchPlaceholder">
+            <div id="placeholder" aria-hidden="true">
               搜索或输入 Web 地址
             </div>
-            <input type="text" id="search-input" aria-label="搜索输入框" autocomplete="off" data-i18n-aria="searchInput">
+            <input type="text" id="search-input" aria-label="搜索输入框" autocomplete="off">
           </div>
 
           <!-- 搜索推荐与历史词条下拉菜单 -->
           <div id="suggestions-box">
             <ul id="suggestion-list" class="suggestion-list"></ul>
             <div class="suggestions-footer" id="suggestions-footer">
-              <span id="clear-history-btn" class="clear-history-btn" data-i18n="clearSearchHistory">清除搜索历史记录</span>
+              <span id="clear-history-btn" class="clear-history-btn">清除搜索历史记录</span>
             </div>
           </div>
         </div>
@@ -1868,7 +1850,7 @@
                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
               </svg>
             </div>
-            <span class="quicklink-title" data-i18n="addlink">添加</span>
+            <span class="quicklink-title">添加</span>
           </div>
         </ntp-quicklinks>
       </div>
@@ -1879,7 +1861,7 @@
       <div class="modal-dialog modal-dialog-large">
         <div>
           <div class="modal-header">
-            <span data-i18n="customBackground">自定义背景</span>
+            <span>自定义背景</span>
             <div class="modal-close-icon" id="btn-close-wallpaper-modal">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M2.22 2.22a.75.75 0 0 1 1.06 0L8 6.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L9.06 8l4.72 4.72a.75.75 0 1 1-1.06 1.06L8 9.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L6.94 8 2.22 3.28a.75.75 0 0 1 0-1.06z"/>
@@ -1890,24 +1872,24 @@
     <!-- 自定义在线壁纸URL弹窗 -->
     <div id="modal-online-wallpaper" class="modal-overlay">
       <div class="modal-dialog">
-      <div class="modal-header" data-i18n="customOnlineWallpaper">自定义在线壁纸</div>
+      <div class="modal-header">自定义在线壁纸</div>
         <form id="online-wallpaper-form" novalidate>
         <div class="form-group">
-          <label class="form-label" for="input-online-url" data-i18n="imageOrVideoUrl">图片或视频URL</label>
+          <label class="form-label" for="input-online-url">图片或视频URL</label>
           <div class="input-container" id="container-online-url">
-            <input type="text" id="input-online-url" class="input" placeholder="https://example.com/image.jpg" autocomplete="off" data-i18n-ph="enterUrl">
+            <input type="text" id="input-online-url" class="input" placeholder="https://example.com/image.jpg" autocomplete="off">
           </div>
           <div class="error-tip" id="tip-online-url">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
             </svg>
-            <span data-i18n="errorUrlReq">请输入有效URL</span>
+            <span>请输入有效URL</span>
           </div>
         </div>
         <div class="modal-footer">
           <div class="modal-footer-right">
-            <button type="button" id="btn-online-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
-            <button type="submit" id="btn-online-save" class="btn btn-primary" data-i18n="save">保存</button>
+            <button type="button" id="btn-online-cancel" class="btn btn-secondary">取消</button>
+            <button type="submit" id="btn-online-save" class="btn btn-primary">保存</button>
           </div>
           </div>
         </form>
@@ -1917,22 +1899,22 @@
     <div class="wallpaper-preview-area">
     <div class="wallpaper-preview-box" id="wallpaper-preview-container">
       <!-- 预览渲染图片或视频 -->
-        <span id="preview-placeholder-text" style="font-size: 13px; color: var(--settings-text-secondary);" data-i18n="usingDefaultBg">正在使用默认背景</span>
+        <span id="preview-placeholder-text" style="font-size: 13px; color: var(--settings-text-secondary);">正在使用默认背景</span>
     </div>
     <div class="wallpaper-actions">
-      <span class="wallpaper-actions-title" id="wallpaper-type-title" data-i18n="selectImage">选择图片或视频</span>
+      <span class="wallpaper-actions-title" id="wallpaper-type-title">选择图片或视频</span>
       <input type="file" id="input-wallpaper-file" class="file-input-hidden" accept="image/*,video/*">
       <div style="display: flex; gap: 8px;">
-        <button type="button" class="btn btn-secondary" id="btn-upload-wallpaper" data-i18n="uploadFile">上传文件</button>
-        <button type="button" class="btn btn-secondary" id="btn-remove-wallpaper" data-i18n="restoreDefault">恢复默认</button>
+        <button type="button" class="btn btn-secondary" id="btn-upload-wallpaper">上传文件</button>
+        <button type="button" class="btn btn-secondary" id="btn-remove-wallpaper">恢复默认</button>
       </div>
     <!-- 使用在线内容  -->
     <div style="margin-top: 16px; border-top: 1px solid var(--settings-card-border); padding-top: 16px;">
       <div class="wallpaper-actions">
-        <span class="wallpaper-actions-title" data-i18n="useOnlineContent">使用在线内容</span>
+        <span class="wallpaper-actions-title">使用在线内容</span>
         <div style="display: flex; gap: 8px;">
-          <button type="button" class="btn btn-secondary" id="btn-bing-wallpaper" data-i18n="bingDaily">必应每日壁纸</button>
-          <button type="button" class="btn btn-secondary" id="btn-custom-url-wallpaper" data-i18n="customUrl">自定义</button>
+          <button type="button" class="btn btn-secondary" id="btn-bing-wallpaper">必应每日壁纸</button>
+          <button type="button" class="btn btn-secondary" id="btn-custom-url-wallpaper">自定义</button>
         </div>
       </div>
     </div>
@@ -1942,9 +1924,9 @@
 
         <!-- 底部背景控制 -->
         <div class="setting-row" style="border-top: 1px solid var(--settings-card-border); padding-top: 16px;">
-          <div class="setting-label-group" style="font-size: 15px; font-weight: 600;" data-i18n="background">背景</div>
+          <div class="setting-label-group" style="font-size: 15px; font-weight: 600;">背景</div>
           <div class="switch-container">
-            <span class="setting-status-text" id="status-bg-modal" data-i18n="off">关闭</span>
+            <span class="setting-status-text" id="status-bg-modal">关闭</span>
             <label class="switch">
               <input type="checkbox" id="toggle-bg-modal-switch">
               <span class="slider"></span>
@@ -1957,18 +1939,18 @@
     <!-- 添加快速链接弹窗 -->
     <div id="modal" class="modal-overlay">
       <div class="modal-dialog">
-        <div id="modal-title" class="modal-header" data-i18n="editShortcut">编辑快速链接</div>
+        <div id="modal-title" class="modal-header">编辑快速链接</div>
         <form id="modal-form" novalidate>
           <div class="form-group">
-            <label class="form-label" for="input-name" data-i18n="name">名称</label>
+            <label class="form-label" for="input-name">名称</label>
             <div class="input-container" id="container-name">
-              <input type="text" id="input-name" class="input" placeholder="输入快速链接名称" autocomplete="off" data-i18n-ph="inputNamePh">
+              <input type="text" id="input-name" class="input" placeholder="输入快速链接名称" autocomplete="off">
             </div>
             <div class="error-tip" id="tip-name">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>
-              <span id="text-name-error" data-i18n="errorNameReq">请输入快速链接名称</span>
+              <span id="text-name-error">请输入快速链接名称</span>
             </div>
           </div>
 
@@ -1981,15 +1963,15 @@
               <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>
-              <span id="text-url-error" data-i18n="errorUrlReq">请输入网址</span>
+              <span id="text-url-error">请输入网址</span>
             </div>
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="btn-delete" class="btn btn-danger" data-i18n="delete">删除</button>
+            <button type="button" id="btn-delete" class="btn btn-danger">删除</button>
             <div class="modal-footer-right">
-              <button type="button" id="btn-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
-              <button type="submit" id="btn-save" class="btn btn-primary" data-i18n="save">保存</button>
+              <button type="button" id="btn-cancel" class="btn btn-secondary">取消</button>
+              <button type="submit" id="btn-save" class="btn btn-primary">保存</button>
             </div>
           </div>
         </form>
@@ -1999,23 +1981,23 @@
     <!-- 自定义搜索引擎配置 Modal 对话框 -->
     <div id="custom-engine-modal" class="modal-overlay">
       <div class="modal-dialog">
-        <div class="modal-header" data-i18n="customEngineTitle">自定义搜索引擎</div>
+        <div class="modal-header">自定义搜索引擎</div>
         <form id="custom-engine-form" novalidate>
           <div class="form-group">
-            <label class="form-label" for="input-engine-name" data-i18n="engineName">搜索引擎名称</label>
+            <label class="form-label" for="input-engine-name">搜索引擎名称</label>
             <div class="input-container" id="container-engine-name">
-              <input type="text" id="input-engine-name" class="input" placeholder="例如: DuckDuckGo" autocomplete="off" data-i18n-ph="engineNamePh">
+              <input type="text" id="input-engine-name" class="input" placeholder="例如: DuckDuckGo" autocomplete="off">
             </div>
             <div class="error-tip" id="tip-engine-name">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>
-              <span data-i18n="errorEngineNameReq">请输入搜索引擎名称</span>
+              <span>请输入搜索引擎名称</span>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="input-engine-url" data-i18n="engineUrl">搜索 URL (%s 替换搜索关键词)</label>
+            <label class="form-label" for="input-engine-url">搜索 URL (%s 替换搜索关键词)</label>
             <div class="input-container" id="container-engine-url">
               <input type="text" id="input-engine-url" class="input" placeholder="https://duckduckgo.com/?q=%s" autocomplete="off">
             </div>
@@ -2023,14 +2005,14 @@
               <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>
-              <span id="text-engine-url-error" data-i18n="errorEngineUrlFormat">请输入搜索 URL，必须包含 %s</span>
+              <span id="text-engine-url-error">请输入搜索 URL，必须包含 %s</span>
             </div>
           </div>
 
           <div class="modal-footer">
             <div class="modal-footer-right">
-              <button type="button" id="btn-engine-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
-              <button type="submit" id="btn-engine-save" class="btn btn-primary" data-i18n="save">保存</button>
+              <button type="button" id="btn-engine-cancel" class="btn btn-secondary">取消</button>
+              <button type="submit" id="btn-engine-save" class="btn btn-primary">保存</button>
             </div>
           </div>
         </form>
@@ -2038,73 +2020,30 @@
     </div>
 
 
-    <!-- 编辑个人资料模态框 -->
-    <div id="modal-profile" class="modal-overlay">
-      <div class="modal-dialog">
-        <div class="modal-header" data-i18n="editProfile">编辑个人资料</div>
-        <form id="profile-form" novalidate>
-          <!-- 头像区域 -->
-          <div class="form-group" style="margin-bottom: 20px;">
-            <label class="form-label" data-i18n="profileAvatar">头像</label>
-            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-              <img id="profile-avatar-preview" src="img/profiles.png" alt="头像预览" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background-color: var(--settings-thumb-bg); border: 1px solid var(--settings-card-border);">
-              <div style="display: flex; gap: 8px;">
-                <button type="button" class="btn btn-secondary" id="btn-upload-avatar" data-i18n="uploadAvatar">上传头像</button>
-                <button type="button" class="btn btn-secondary" id="btn-remove-avatar" data-i18n="removeAvatar" style="display: none;">删除头像</button>
-              </div>
-              <input type="file" id="input-avatar-file" class="file-input-hidden" accept="image/*">
-            </div>
-          </div>
-
-          <!-- 姓名 -->
-          <div class="form-group">
-            <label class="form-label" for="input-profile-name" data-i18n="name">姓名</label>
-            <div class="input-container" id="container-profile-name">
-              <input type="text" id="input-profile-name" class="input" placeholder="个人" autocomplete="off">
-            </div>
-          </div>
-
-          <!-- 描述 -->
-          <div class="form-group">
-            <label class="form-label" for="input-profile-description" data-i18n="description">描述</label>
-            <div class="input-container" id="container-profile-description">
-              <input type="text" id="input-profile-description" class="input" placeholder="本地账户" autocomplete="off">
-            </div>
-          </div> 
-
-          <div class="modal-footer">
-            <div class="modal-footer-right">
-              <button type="button" id="btn-profile-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
-              <button type="submit" id="btn-profile-save" class="btn btn-primary" data-i18n="save">保存</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
 
     <!-- 管理配置文件模态框 -->
     <div id="modal-manage-profiles" class="modal-overlay">
       <div class="modal-dialog">
-        <div class="modal-header" data-i18n="manageProfilesTitle">管理配置文件</div>
+        <div class="modal-header">管理配置文件</div>
         <div style="display: flex; flex-direction: column; gap: 12px; padding: 8px 0 16px 0;">
           <!-- 导出配置按钮 -->
           <button id="btn-export-config" class="btn btn-secondary" style="width: 100%; justify-content: center; padding: 10px 0; gap: 8px;">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path d="M1.5 3a.5.5 0 0 1 .5.5V12a.5.5 0 0 1-1 0V3.5a.5.5 0 0 1 .5-.5m9.146.646a.5.5 0 0 1 .708 0l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8H4.5a.5.5 0 0 1 0-1h8.793l-2.647-2.646a.5.5 0 0 1 0-.708"/>
             </svg>
-            <span data-i18n="exportConfig">导出配置</span>
+            <span>导出配置</span>
           </button>
           <!-- 恢复配置按钮 -->
           <button id="btn-import-config" class="btn btn-secondary" style="width: 100%; justify-content: center; padding: 10px 0; gap: 8px;">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path d="M13 12.5v-9a.5.5 0 0 1 .992-.09L14 3.5v9a.5.5 0 0 1-.992.09zM1.008 8.09L1 8a.5.5 0 0 1 .41-.492L1.5 7.5h8.792L7.611 4.818a.5.5 0 0 1-.058-.638l.058-.069a.5.5 0 0 1 .638-.058l.069.058l3.536 3.535a.5.5 0 0 1 .057.638l-.057.07l-3.536 3.535a.5.5 0 0 1-.765-.638l.058-.069L10.292 8.5H1.5a.5.5 0 0 1-.492-.41L1 8z"/>
             </svg>
-            <span data-i18n="importConfig">恢复配置</span>
+            <span>恢复配置</span>
           </button>
         </div>
         <div class="modal-footer">
           <div class="modal-footer-right">
-            <button type="button" id="btn-manage-profiles-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
+            <button type="button" id="btn-manage-profiles-cancel" class="btn btn-secondary">取消</button>
           </div>
         </div>
       </div>
@@ -2117,14 +2056,14 @@
     <!-- 重置确认弹窗 -->
     <div id="modal-reset-confirm" class="modal-overlay">
       <div class="modal-dialog">
-        <div class="modal-header" data-i18n="resetTitle">重置 MyTab</div>
+        <div class="modal-header">重置 MyTab</div>
         <div style="padding: 8px 0 16px 0; color: var(--neutral-foreground-rest); font-size: 14px; line-height: 1.6;">
-          <p style="margin: 0;" data-i18n="resetDesc">如果你遇到了一些问题，或是对于目前的设定不满意，重置可以清除所有数据并还原 MyTab 为初始状态，请注意，此操作不可撤回！</p>
+          <p style="margin: 0;">如果你遇到了一些问题，或是对于目前的设定不满意，重置可以清除所有数据并还原 MyTab 为初始状态，请注意，此操作不可撤回！</p>
         </div>
         <div class="modal-footer">
           <div class="modal-footer-right">
-            <button type="button" id="btn-reset-cancel" class="btn btn-secondary" data-i18n="cancel">取消</button>
-            <button type="button" id="btn-reset-confirm" class="btn btn-danger" data-i18n="confirmReset">确定</button>
+            <button type="button" id="btn-reset-cancel" class="btn btn-secondary">取消</button>
+            <button type="button" id="btn-reset-confirm" class="btn btn-danger">确定</button>
           </div>
         </div>
       </div>
@@ -2133,13 +2072,13 @@
     <!-- 重置完成提示弹窗 -->
     <div id="modal-reset-done" class="modal-overlay">
       <div class="modal-dialog">
-        <div class="modal-header" data-i18n="resetDoneTitle">重置完成</div>
+        <div class="modal-header">重置完成</div>
         <div style="padding: 8px 0 16px 0; color: var(--neutral-foreground-rest); font-size: 14px; line-height: 1.6;">
-          <p style="margin: 0;" data-i18n="resetDoneDesc">所有设置已重置为初始状态，页面即将刷新。</p>
+          <p style="margin: 0;">所有设置已重置为初始状态，页面即将刷新。</p>
         </div>
         <div class="modal-footer">
           <div class="modal-footer-right">
-            <button type="button" id="btn-reset-done-confirm" class="btn btn-primary" data-i18n="refreshNow">立即刷新</button>
+            <button type="button" id="btn-reset-done-confirm" class="btn btn-primary">立即刷新</button>
           </div>
         </div>
       </div>

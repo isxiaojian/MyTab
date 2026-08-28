@@ -25,290 +25,105 @@ const logos = {
   custom: ``
 };
 
-// 语言字典
-const i18nData = {
-  'zh-CN': {
-    pageTitle: '新标签页',
-    settingsTitle: '页面设置',
-    close: '关闭',
-    quicklinks: '快速链接',
-    off: '关闭',
-    on: '打开',
-    rows1: '1 行',
-    rows2: '2 行',
-    showTimeCapsule: '显示时间',
-    showMenuButton: '显示菜单按钮',
-    searchEngine: '搜索引擎',
-    custom: '自定义',
-    editCustomEngine: '编辑自定义搜索引擎',
-    saveHistory: '保存搜索历史记录',
-    layout: '页面布局',
-    inspirational: '展望',
-    focused: '聚焦',
-    background: '背景',
-    editBackground: '编辑背景',
-    cookieNotice: '隐私与 Cookie',
-    license: '开源协议',
-    contributor: '贡献名单',
-    helpFeedback: '帮助&反馈',
-    presentedBy: '由',
-    author: 'isxiaojian',
-    forYou: '为您呈现',
-    disclaimer: '请注意，此网页与 Microsoft 无关。',
-    searchPlaceholder: '搜索或输入 Web 地址',
-    searchInput: '搜索输入框',
-    clearSearchHistory: '清除搜索历史记录',
-    customBackground: '自定义背景',
-    usingDefaultBg: '正在使用默认背景',
-    selectImage: '选择图片或视频',
-    uploadFile: '上传文件',
-    restoreDefault: '恢复默认',
-    editShortcut: '编辑快速链接',
-    name: '名称',
-    inputNamePh: '输入快速链接名称',
-    errorNameReq: '请输入快速链接名称',
-    errorUrlReq: '请输入网址',
-    delete: '删除',
-    cancel: '取消',
-    save: '保存',
-    customEngineTitle: '自定义搜索引擎',
-    engineName: '搜索引擎名称',
-    engineNamePh: '例如: DuckDuckGo',
-    errorEngineNameReq: '请输入搜索引擎名称',
-    engineUrl: '搜索 URL (%s 替换搜索关键词)',
-    errorEngineUrlFormat: '请输入搜索 URL，必须包含 %s',
-    useOnlineContent: '使用在线内容',
-    bingDaily: '必应每日壁纸',
-    customUrl: '自定义',
-    customOnlineWallpaper: '自定义在线壁纸',
-    imageOrVideoUrl: '图片或视频URL',
-    enterUrl: '输入图片或视频URL',
-    bing: 'Bing',
-    forceBingCN: '强制使用必应中国版',
-    forceBingCNDesc: '<b>开启</b>：强制使用必应中国版<br><b>关闭</b>：根据网络环境自动选择。<br>此选项可以避免代理设置导致 www.bing.com 无法自动跳转到 cn.bing.com。',
-    enhancedVisibility: '增强元素可见性',
-    enhancedVisibilityDesc: '开启背景时给Logo和顶部按钮添加半透明背景，使其在背景图上更清晰',
-    addlink: '添加',
 
-    // 个人资料菜单
-    accountDetails: '编辑账户信息',
-    manageProfiles: '管理配置文件',
-    initConfig: '初始化配置',
-
-   // 编辑个人资料弹窗
-    editProfile: '编辑个人资料',
-    profileAvatar: '头像',
-    uploadAvatar: '上传头像',
-    removeAvatar: '删除头像',
-    description: '描述',
-
-    // 管理配置文件弹窗
-    manageProfilesTitle: '管理配置文件',
-    exportConfig: '导出配置',
-    importConfig: '恢复配置',
-
-    // 重置确认弹窗
-    resetTitle: '重置 MyTab',
-    resetDesc: '如果你遇到了一些问题，或是对于目前的设定不满意，重置可以清除所有数据并还原 MyTab 为初始状态，请注意，此操作不可撤回！',
-    confirmReset: '确定',
-
-    // 重置完成弹窗
-    resetDoneTitle: '重置完成',
-    resetDoneDesc: '所有设置已重置为初始状态，页面即将刷新。',
-    refreshNow: '立即刷新'
-  },
-};
-
-// 根据用户语言设置和系统语言，解析并返回实际使用的语言代码
-function getResolvedLanguageCode(langConfig) {
-  // 仅保留简体中文
-  return 'zh-CN';
+// 更新所有开关状态文字（开/关）
+function updateStatusTexts() {
+  const setStatus = (statusId, switchId) => {
+    const statusEl = document.getElementById(statusId);
+    if (statusEl) {
+      const isChecked = document.getElementById(switchId)?.checked || false;
+      statusEl.innerText = isChecked ? '开' : '关';
+    }
+  };
+  setStatus('status-history', 'toggle-history-switch');
+  setStatus('status-bg', 'toggle-bg-switch');
+  setStatus('status-bg-modal', 'toggle-bg-modal-switch');
+  setStatus('status-time-capsule', 'toggle-time-capsule-switch');
+  setStatus('status-menu-button', 'toggle-menu-button-switch');
+  setStatus('status-force-bing-cn', 'toggle-force-bing-cn');
+  setStatus('status-enhanced-visibility', 'toggle-enhanced-visibility');
 }
 
-// 界面渲染函数
-function applyLanguage(langConfig) {
-  const langCode = getResolvedLanguageCode(langConfig);
-  const dict = i18nData[langCode] || i18nData['zh-CN'];
+// ===== 工具提示(Tooltip) 初始化 =====
+function initTooltips() {
+  // 存储当前显示中的 tooltip 位置更新函数，用于滚动/缩放时重新定位
+  const activeTooltipIcons = new Set();
 
-  document.documentElement.lang = 'zh-CN';
+  const tooltipReposition = () => {
+    activeTooltipIcons.forEach(fn => fn());
+  };
+  window.addEventListener('scroll', tooltipReposition, true);
+  window.addEventListener('resize', tooltipReposition);
 
-  // 1.替换 innerText
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (dict[key] !== undefined) {
-      el.innerText = dict[key];
-    }
-  });
+  document.querySelectorAll('.tooltip-icon').forEach(icon => {
+    const tooltip = icon.querySelector('.tooltip-content');
+    if (!tooltip) return;
 
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (dict[key] !== undefined) {
-      const arrow = el.querySelector('.tooltip-arrow');
-      el.innerHTML = dict[key];
-      if (arrow) {
-        el.insertBefore(arrow, el.firstChild);
-      }
-    }
-  });
+    // 关键：初始化时就将 tooltip 移到 body，而不是在 show 时
+    document.body.appendChild(tooltip);
 
-  // 2.替换 title 属性
-  document.querySelectorAll('[data-i18n-title]').forEach(el => {
-    const key = el.getAttribute('data-i18n-title');
-    if (dict[key] !== undefined) {
-      el.setAttribute('title', dict[key]);
-    }
-  });
+    let tipWidth = 0;
+    let tipHeight = 0;
 
-  // 3.替换 placeholder 属性
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph');
-    if (dict[key] !== undefined) {
-      el.setAttribute('placeholder', dict[key]);
-    }
-  });
-
-  // 4.替换 aria-label 属性
-  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-    const key = el.getAttribute('data-i18n-aria');
-    if (dict[key] !== undefined) {
-      el.setAttribute('aria-label', dict[key]);
-    }
-  });
-
-  // 5.刷新特殊状态开闭文本
-  const statusHist = document.getElementById('status-history');
-  if (statusHist) {
-    const isChecked = document.getElementById('toggle-history-switch').checked;
-    statusHist.innerText = isChecked ? dict.on : dict.off;
-  }
-  
-  const statusBg = document.getElementById('status-bg');
-  if (statusBg) {
-    const isChecked = document.getElementById('toggle-bg-switch').checked;
-    statusBg.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  const statusBgModal = document.getElementById('status-bg-modal');
-  if (statusBgModal) {
-    const isChecked = document.getElementById('toggle-bg-modal-switch').checked;
-    statusBgModal.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  // 6.刷新时间状态文本
-  const statusTimeCapsule = document.getElementById('status-time-capsule');
-  if (statusTimeCapsule) {
-    const isChecked = document.getElementById('toggle-time-capsule-switch')?.checked || false;
-    statusTimeCapsule.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  // 7.刷新菜单按钮状态文本
-  const statusMenuBtn = document.getElementById('status-menu-button');
-  if (statusMenuBtn) {
-    const isChecked = document.getElementById('toggle-menu-button-switch')?.checked ?? true;
-    statusMenuBtn.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  // 8.强制使用必应中国版开关状态文本
-  const statusForceBingCN = document.getElementById('status-force-bing-cn');
-  if (statusForceBingCN) {
-    const isChecked = document.getElementById('toggle-force-bing-cn')?.checked || false;
-    statusForceBingCN.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  // 9.刷新增强元素可见性状态文本
-  const statusEnhancedVisibility = document.getElementById('status-enhanced-visibility');
-  if (statusEnhancedVisibility) {
-    const isChecked = document.getElementById('toggle-enhanced-visibility')?.checked || false;
-    statusEnhancedVisibility.innerText = isChecked ? dict.on : dict.off;
-  }
-
-  // 10.刷新自定义下拉选项文本
-  refreshCustomSelects();
-
-  // ===== 工具提示(Tooltip) 初始化 =====
-
-  if (!window._tooltipInitialized) {
-    window._tooltipInitialized = true;
-
-    // 存储当前显示中的 tooltip 位置更新函数，用于滚动/缩放时重新定位
-    const activeTooltipIcons = new Set();
-
-    const tooltipReposition = () => {
-      activeTooltipIcons.forEach(fn => fn());
+    // 测量 tooltip 尺寸（首次显示前调用，确保内容已渲染）
+    const measureTooltip = () => {
+      const tipRect = tooltip.getBoundingClientRect();
+      tipWidth = tipRect.width;
+      tipHeight = tipRect.height;
     };
-    window.addEventListener('scroll', tooltipReposition, true);
-    window.addEventListener('resize', tooltipReposition);
 
-    document.querySelectorAll('.tooltip-icon').forEach(icon => {
-      const tooltip = icon.querySelector('.tooltip-content');
-      if (!tooltip) return;
-
-      // 关键：初始化时就将 tooltip 移到 body，而不是在 show 时
-      document.body.appendChild(tooltip);
-
-      let tipWidth = 0;
-      let tipHeight = 0;
-
-      // 测量 tooltip 尺寸（首次显示前调用，确保内容已渲染）
-      const measureTooltip = () => {
-        const tipRect = tooltip.getBoundingClientRect();
-        tipWidth = tipRect.width;
-        tipHeight = tipRect.height;
-      };
-
-      // 根据图标位置计算 tooltip 显示坐标
-      const position = () => {
-        if (tipWidth === 0 || tipHeight === 0) {
-          measureTooltip();
-        }
-        const rect = icon.getBoundingClientRect();
-
-        // 默认在图标上方显示
-        let left = rect.left + rect.width / 2 - tipWidth / 2;
-        let top = rect.top - tipHeight - 10;
-        let below = false;
-
-        // 如果上方空间不足（<8px），且下方空间充足，则改为下方显示
-        if (top < 8 && rect.bottom + tipHeight + 10 < window.innerHeight) {
-          top = rect.bottom + 10;
-          below = true;
-        }
-
-        // 水平方向边界约束，防止超出视口
-        left = Math.max(8, Math.min(left, window.innerWidth - tipWidth - 8));
-
-        tooltip.style.left = left + 'px';
-        tooltip.style.top = top + 'px';
-
-        // 根据显示方向切换箭头朝向
-        if (below) {
-          tooltip.classList.add('tooltip-below');
-        } else {
-          tooltip.classList.remove('tooltip-below');
-        }
-      };
-
-      const show = () => {
+    // 根据图标位置计算 tooltip 显示坐标
+    const position = () => {
+      if (tipWidth === 0 || tipHeight === 0) {
         measureTooltip();
-        position();
-        tooltip.style.visibility = 'visible';
-        tooltip.style.opacity = '1';
-        activeTooltipIcons.add(position);
-      };
+      }
+      const rect = icon.getBoundingClientRect();
 
-      const hide = () => {
-        tooltip.style.visibility = 'hidden';
-        tooltip.style.opacity = '0';
-        activeTooltipIcons.delete(position);
-      };
+      // 默认在图标上方显示
+      let left = rect.left + rect.width / 2 - tipWidth / 2;
+      let top = rect.top - tipHeight - 10;
+      let below = false;
 
-      icon.addEventListener('mouseenter', show);
-      icon.addEventListener('focus', show);
-      icon.addEventListener('click', show);
-      icon.addEventListener('mouseleave', hide);
-      icon.addEventListener('blur', hide);
-    });
-  }
+      // 如果上方空间不足（<8px），且下方空间充足，则改为下方显示
+      if (top < 8 && rect.bottom + tipHeight + 10 < window.innerHeight) {
+        top = rect.bottom + 10;
+        below = true;
+      }
+
+      // 水平方向边界约束，防止超出视口
+      left = Math.max(8, Math.min(left, window.innerWidth - tipWidth - 8));
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+
+      // 根据显示方向切换箭头朝向
+      if (below) {
+        tooltip.classList.add('tooltip-below');
+      } else {
+        tooltip.classList.remove('tooltip-below');
+      }
+    };
+
+    const show = () => {
+      measureTooltip();
+      position();
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+      activeTooltipIcons.add(position);
+    };
+
+    const hide = () => {
+      tooltip.style.visibility = 'hidden';
+      tooltip.style.opacity = '0';
+      activeTooltipIcons.delete(position);
+    };
+
+    icon.addEventListener('mouseenter', show);
+    icon.addEventListener('focus', show);
+    icon.addEventListener('click', show);
+    icon.addEventListener('mouseleave', hide);
+    icon.addEventListener('blur', hide);
+  });
 }
 
 // LocalStorage 读写封装（带 JSON 序列化与异常保护）
@@ -609,28 +424,6 @@ function decodeInput(str) {
   }
   window.addEventListener('resize', repositionOrClose);
   window.addEventListener('scroll', repositionOrClose, true);
-}
-
-// 重新同步自定义下拉菜单的显示文本与选项（语言切换后调用）
-function refreshCustomSelects() {
-  document.querySelectorAll('.custom-select-display').forEach(display => {
-    const selectId = display.getAttribute('data-for');
-    const nativeSelect = document.getElementById(selectId);
-    if (!nativeSelect) return;
-    const textEl = display.querySelector('.custom-select-text');
-    const selectedOption = nativeSelect.options[nativeSelect.selectedIndex];
-    if (selectedOption) {
-      textEl.textContent = selectedOption.textContent.trim();
-    }
-    const dropdown = document.querySelector('.custom-select-dropdown.active[data-for-select="' + selectId + '"]') || null;
-    if (dropdown) {
-      const options = dropdown.querySelectorAll('.custom-select-option');
-      options.forEach((optEl, i) => {
-        optEl.textContent = nativeSelect.options[i].textContent.trim();
-        optEl.classList.toggle('selected', i === nativeSelect.selectedIndex);
-      });
-    }
-  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -938,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (wallpaperTypeTitle) wallpaperTypeTitle.textContent = '选择图片';
       if (wallpaperPreviewContainer) {
-        wallpaperPreviewContainer.innerHTML = `<span style="font-size: 13px; color: var(--settings-text-secondary);" data-i18n="usingDefaultBg">正在使用默认背景</span>`;
+        wallpaperPreviewContainer.innerHTML = `<span style="font-size: 13px; color: var(--settings-text-secondary);">正在使用默认背景</span>`;
       }
       return;
     }
@@ -974,130 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-// ===== 用户个人资料管理 =====
-const defaultProfile = {
-  name: '个人',
-  description: '本地账户',
-  avatar: 'img/profiles.png'
-};
-
-// 加载或初始化用户资料
-let userProfile = Storage.get('ntp_user_profile', null);
-if (!userProfile) {
-  userProfile = { ...defaultProfile };
-  Storage.set('ntp_user_profile', userProfile);
-}
-
-// 更新菜单中的用户信息显示
-function updateProfileUI() {
-  const avatarImg = document.getElementById('profile-avatar');
-  const nameEl = document.getElementById('profile-name');
-  const descriptionEl = document.getElementById('profile-description');
-
-  if (avatarImg) avatarImg.src = userProfile.avatar || defaultProfile.avatar;
-  if (nameEl) nameEl.textContent = userProfile.name || defaultProfile.name;
-  if (descriptionEl) descriptionEl.textContent = userProfile.description || defaultProfile.description;
-  
-}
-
-updateProfileUI();
-
-// 获取编辑弹窗元素
-const modalProfile = document.getElementById('modal-profile');
-const profileForm = document.getElementById('profile-form');
-const inputProfileName = document.getElementById('input-profile-name');
-const inputProfileDescription = document.getElementById('input-profile-description');
-const profileAvatarPreview = document.getElementById('profile-avatar-preview');
-const btnUploadAvatar = document.getElementById('btn-upload-avatar');
-const inputAvatarFile = document.getElementById('input-avatar-file');
-const btnRemoveAvatar = document.getElementById('btn-remove-avatar');
-const btnProfileCancel = document.getElementById('btn-profile-cancel');
-const btnProfileSave = document.getElementById('btn-profile-save');
-const btnProfileDetails = document.getElementById('btn-profile-details');
-
-// 打开编辑个人资料弹窗
-function openProfileModal() {
-  // 填充当前数据
-  inputProfileName.value = userProfile.name || '';
-  inputProfileDescription.value = userProfile.description || '';
-  profileAvatarPreview.src = userProfile.avatar || defaultProfile.avatar;
-  // 显示删除按钮条件：头像不是默认头像
-  const isDefaultAvatar = userProfile.avatar === defaultProfile.avatar;
-  btnRemoveAvatar.style.display = isDefaultAvatar ? 'none' : 'inline-flex';
-  modalProfile.classList.add('active');
-  setTimeout(() => inputProfileName.focus(), 50);
-}
-
-// 关闭个人资料编辑弹窗
-function closeProfileModal() {
-  modalProfile.classList.remove('active');
-}
-
-// 点击账户详细信息按钮
-btnProfileDetails?.addEventListener('click', () => {
-  popoverWaffle?.classList.remove('active'); // 关闭菜单
-  openProfileModal();
-});
-
-// 上传头像
-btnUploadAvatar?.addEventListener('click', () => {
-  inputAvatarFile.click();
-});
-
-inputAvatarFile?.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (event) => {
-    const dataUrl = event.target.result;
-    profileAvatarPreview.src = dataUrl;
-    // 预览时即显示删除按钮
-    btnRemoveAvatar.style.display = 'inline-flex';
-    // 暂存到表单，但尚未保存到userProfile，等提交时正式保存
-    // 我们用临时变量存储
-    window._tempAvatar = dataUrl;
-  };
-  reader.readAsDataURL(file);
-});
-
-// 删除头像（恢复到默认）
-btnRemoveAvatar?.addEventListener('click', () => {
-  profileAvatarPreview.src = defaultProfile.avatar;
-  btnRemoveAvatar.style.display = 'none';
-  window._tempAvatar = defaultProfile.avatar; // 标记为默认
-});
-
-// 取消按钮
-btnProfileCancel?.addEventListener('click', closeProfileModal);
-
-// 提交表单保存
-profileForm?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  // 获取各字段值
-  const name = inputProfileName.value.trim() || defaultProfile.name;
-  const description = inputProfileDescription.value.trim() || defaultProfile.description;
-
-  // 头像处理：若临时头像存在则使用，否则保留原有头像（如果用户未操作头像，则不变）
-  let avatar = userProfile.avatar; // 默认使用原有
-  if (window._tempAvatar !== undefined) {
-    // 用户操作过头像
-    if (window._tempAvatar === defaultProfile.avatar) {
-      avatar = defaultProfile.avatar;
-    } else {
-      avatar = window._tempAvatar;
-    }
-    delete window._tempAvatar; // 清除临时变量
-  }
-
-  // 更新userProfile
-  userProfile.name = name;
-  userProfile.description = description;
-  userProfile.avatar = avatar;
-
-  Storage.set('ntp_user_profile', userProfile);
-  updateProfileUI(); // 刷新菜单
-  closeProfileModal();
-});
 
 // 管理配置文件
 
@@ -1182,7 +851,6 @@ btnExportConfig?.addEventListener('click', () => {
     'ntp_quicklinks_list',
     'ntp_search_history',
     'ntp_custom_engine_config',
-    'ntp_user_profile',
     'ntp_custom_wallpaper'
   ];
 
@@ -1255,21 +923,21 @@ fileInputRestore?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage('zh-CN');
+    updateStatusTexts();
   });
 
   toggleBgModalSwitch?.addEventListener('change', (e) => {
     bgEnabled = e.target.checked;
     Storage.set('ntp_bg_enabled', bgEnabled);
     applyBackgroundState();
-    applyLanguage('zh-CN');
+    updateStatusTexts();
   });
 
   toggleEnhancedVisibility?.addEventListener('change', (e) => {
     enhancedVisibility = e.target.checked;
     Storage.set('ntp_enhanced_visibility', enhancedVisibility);
     applyEnhancedVisibility();
-    applyLanguage('zh-CN');
+    updateStatusTexts();
   });
 
   // 壁纸弹窗逻辑
@@ -1277,7 +945,7 @@ fileInputRestore?.addEventListener('change', (e) => {
     popoverSettings?.classList.remove('active');
     modalWallpaper?.classList.add('active');
     renderWallpaper();
-    applyLanguage('zh-CN');
+    updateStatusTexts();
   });
 
   btnCloseWallpaperModal?.addEventListener('click', () => {
@@ -1344,7 +1012,7 @@ fileInputRestore?.addEventListener('change', (e) => {
         applyBackgroundState();
         if (toggleBgSwitch) toggleBgSwitch.checked = true;
         if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-        applyLanguage('zh-CN');
+        updateStatusTexts();
       } else {
         alert('获取必应壁纸失败，请稍后重试。');
       }
@@ -1413,7 +1081,7 @@ fileInputRestore?.addEventListener('change', (e) => {
   applyBackgroundState();
   if (toggleBgSwitch) toggleBgSwitch.checked = true;
   if (toggleBgModalSwitch) toggleBgModalSwitch.checked = true;
-  applyLanguage('zh-CN');
+  updateStatusTexts();
   closeOnlineModal();
 });
 
@@ -1461,7 +1129,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleForceBingCN?.addEventListener('change', (e) => {
     forceBingCN = e.target.checked;
     Storage.set('ntp_force_bing_cn', forceBingCN);
-    applyLanguage('zh-CN'); 
+    updateStatusTexts(); 
   });
 
   btnEditEngine?.addEventListener('click', () => {
@@ -1471,7 +1139,7 @@ inputOnlineUrl?.addEventListener('input', () => {
   toggleHistorySwitch?.addEventListener('change', (e) => {
     historyEnabled = e.target.checked;
     Storage.set('ntp_history_enabled', historyEnabled);
-    applyLanguage('zh-CN');
+    updateStatusTexts();
     fetchAndShowSuggestions();
   });
 
@@ -1488,16 +1156,14 @@ inputOnlineUrl?.addEventListener('input', () => {
 
   if (toggleTimeCapsuleSwitch) {
     toggleTimeCapsuleSwitch.checked = showTimeCapsule;
-    // 初始状态文字
-    const dict = i18nData['zh-CN'];
     if (statusTimeCapsuleText) {
-      statusTimeCapsuleText.innerText = showTimeCapsule ? dict.on : dict.off;
+      statusTimeCapsuleText.innerText = showTimeCapsule ? '开' : '关';
     }
 
     toggleTimeCapsuleSwitch.addEventListener('change', (e) => {
       showTimeCapsule = e.target.checked;
       Storage.set('ntp_show_time_capsule', showTimeCapsule);
-      applyLanguage('zh-CN');
+      updateStatusTexts();
       applyTimeCapsuleVisibility();
     });
   }
@@ -1508,15 +1174,14 @@ inputOnlineUrl?.addEventListener('input', () => {
 
   if (toggleMenuButtonSwitch) {
     toggleMenuButtonSwitch.checked = showMenuButton;
-    const dict = i18nData['zh-CN'];
     if (statusMenuButtonText) {
-      statusMenuButtonText.innerText = showMenuButton ? dict.on : dict.off;
+      statusMenuButtonText.innerText = showMenuButton ? '开' : '关';
     }
 
     toggleMenuButtonSwitch.addEventListener('change', (e) => {
       showMenuButton = e.target.checked;
       Storage.set('ntp_show_menu_button', showMenuButton);
-      applyLanguage('zh-CN');
+      updateStatusTexts();
       applyMenuButtonVisibility();
     });
   }
@@ -1604,7 +1269,7 @@ inputOnlineUrl?.addEventListener('input', () => {
           <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
         </svg>
       </div>
-      <span class="quicklink-title" data-i18n="addlink">添加</span>
+      <span class="quicklink-title">添加</span>
     `;
     quicklinksElem.appendChild(addBtnStatic);
   }
@@ -1674,8 +1339,6 @@ inputOnlineUrl?.addEventListener('input', () => {
   addBtnStatic.style.display = 'flex';
   quicklinksElem.appendChild(addBtnStatic);
 
-  // 重新应用语言确保“添加”按钮文本更新
-  applyLanguage('zh-CN');
 }
 
 
@@ -2110,8 +1773,9 @@ searchInput?.addEventListener('input', () => {
     }
   }
 
-  // 初始化应用翻译（仅保留中文）
-  applyLanguage('zh-CN');
+  // 初始化状态文字与提示组件
+  updateStatusTexts();
+  initTooltips();
 
   // 初始化自定义下拉组件
   initCustomSelects();
